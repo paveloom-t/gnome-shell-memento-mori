@@ -1,0 +1,35 @@
+{
+    "name": "gnome-shell-memento-mori",
+    "scripts": {
+        "build": "yarn run build:ts && yarn run build:extension",
+        "clean": "yarn run clean:ts",
+        "build:ts": "yarn run clean:ts && rollup -c",
+        "clean:ts": "rm -rf dist",
+        "build:extension": "yarn run build:schema",
+        "build:schema": "yarn run clean:schema && glib-compile-schemas resources/schemas --targetdir=dist/schemas/",
+        "clean:schema": "bash -c 'rm -rf dist/schemas/*.compiled'",
+        "build:package": "bash -c 'yarn run build && rm -rf dist/memento-mori@paveloom.zip && cd dist && zip -qr memento-mori@paveloom.zip .'",
+        "watch": "yarn run build && yarn run rollup -c --watch",
+        "lint": "eslint ."
+    },
+    "packageManager": "yarn@3.2.3",
+    "devDependencies": {
+        "@gi-types/gobject2": "^2.72.1",
+        "@gi-types/st1": "^1.0.1",
+        "@rollup/plugin-commonjs": "^22.0.2",
+        "@rollup/plugin-node-resolve": "^14.1.0",
+        "@rollup/plugin-typescript": "^8.5.0",
+        "@tsconfig/strictest": "^1.0.1",
+        "@typescript-eslint/eslint-plugin": "^5.36.1",
+        "@typescript-eslint/parser": "^5.36.1",
+        "eslint": "^8.23.0",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-plugin-prettier": "^4.2.1",
+        "prettier": "^2.7.1",
+        "rollup": "^2.79.0",
+        "rollup-plugin-cleanup": "^3.2.1",
+        "rollup-plugin-copy": "^3.4.0",
+        "tslib": "^2.4.0",
+        "typescript": "^4.8.2"
+    }
+}

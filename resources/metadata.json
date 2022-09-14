@@ -1,0 +1,8 @@
+{
+    "name": "Memento Mori",
+    "description": "Make every second of your life count. Literally!\n\nThis extension adds a counter to the panel which counts down the time you have left based on your birthday and life expectancy.",
+    "uuid": "memento-mori@paveloom",
+    "version": 1,
+    "shell-version": ["42"],
+    "url": "https://github.com/paveloom-t/gnome-shell-memento-mori"
+}

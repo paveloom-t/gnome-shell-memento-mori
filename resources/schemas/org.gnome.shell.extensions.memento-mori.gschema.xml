@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schemalist gettext-domain="gnome-shell-extensions">
+  <schema path="/org/gnome/shell/extensions/memento-mori/" id="org.gnome.shell.extensions.memento-mori">
+    <key type="s" name="key">
+      <default>""</default>
+      <summary>Summary</summary>
+      <description>Description</description>
+    </key>
+  </schema>
+</schemalist>

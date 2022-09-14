@@ -1,0 +1,18 @@
+# Yarn
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+!.yarn/cache
+
+# GJS bindings
+@types
+docs-lock.json
+
+# Rollup
+dist
+
+# Extra
+node_modules
