@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+import("@gi-types/glib2").Mainloop;
+
 declare const imports: {
-    lang: unknown;
+    mainloop: Mainloop;
     misc: {
         extensionUtils: {
             initTranslations: (domain: string) => void;
@@ -14,9 +16,17 @@ declare const imports: {
     ui: {
         main: {
             notify: (arg: string) => void;
-            panel: any;
+            panel: {
+                addToStatusArea: (
+                    role,
+                    indicator,
+                    position: number,
+                    box: "left" | "center" | "right",
+                ) => indicator;
+            };
         };
         panelMenu: any;
-        popupMenu: any;
     };
 };
+
+declare const _: (arg: string) => string;
