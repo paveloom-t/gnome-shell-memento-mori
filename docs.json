@@ -1,0 +1,19 @@
+{
+  "options": {
+    "inferGenerics": true,
+    "promisify": true,
+    "propertyCase": "camel",
+    "versionedOutput": true,
+    "versionedImports": true,
+    "noAdvancedVariants": true,
+    "withDocs": true,
+    "importPrefix": "@gi-types/",
+    "out": "./@gi-types"
+  },
+  "libraries": {
+    "Adw": "1",
+    "GLib": "2.0",
+    "Gio": "2.0",
+    "Gtk": "4.0"
+  }
+}

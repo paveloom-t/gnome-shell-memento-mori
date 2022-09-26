@@ -5,9 +5,11 @@
 
 import GLib from "@gi-types/glib2";
 import GObject from "@gi-types/gobject2";
+import type Gio from "@gi-types/gio2";
 import { ActorAlign } from "@gi-types/clutter10";
 import { Label } from "@gi-types/st1";
 import {
+    add,
     differenceInDays,
     differenceInHours,
     differenceInMinutes,
@@ -17,13 +19,20 @@ import {
     differenceInYears,
 } from "date-fns";
 
+import { unpackSettings, SettingsValues } from "utils";
+
 const Main = imports.ui.main;
 const Mainloop = imports.mainloop;
 const { Button } = imports.ui.panelMenu;
+const { getSettings } = imports.misc.extensionUtils;
 
 // Indicator
 const Indicator = GObject.registerClass(
     class Indicator extends Button {
+        // Settings
+        #settings: Gio.Settings;
+        // The date of passing away
+        #end: Date;
         // Label
         #label: Label;
         // Construct the indicator
@@ -37,35 +46,40 @@ const Indicator = GObject.registerClass(
                 // Don't create the menu?
                 true,
             );
+            // Obtain and unpack the settings
+            this.#settings = getSettings();
+            const settingsValues = unpackSettings(this.#settings);
+            // Save the end date
+            this.#end = Indicator.getEndDate(settingsValues);
             // Add the label
             this.#label = new Label({
-                text: Indicator.getText(),
+                text: Indicator.getText(settingsValues, this.#end),
                 yAlign: ActorAlign.CENTER,
             });
             this.add_child(this.#label);
         }
         // Update the indicator
         update() {
-            this.#label.text = Indicator.getText();
+            // Unpack the settings
+            const settingsValues = unpackSettings(this.#settings);
+            // Update the fields
+            this.#end = Indicator.getEndDate(settingsValues);
+            this.#label.text = Indicator.getText(settingsValues, this.#end);
         }
         // Get the text for the label
-        static getText(): string {
-            // Define the format string
-            const format = "${w} full weeks left";
-            // Get the start date
+        static getText(settingsValues: SettingsValues, end: Date): string {
+            // Get the current date
             const start = new Date();
-            // Get the end date
-            const end = new Date(1992 + 80, 0, 1);
             // Get each part of the time stamp
-            const years = differenceInYears(end, start);
-            const months = differenceInMonths(end, start);
-            const weeks = differenceInWeeks(end, start);
-            const days = differenceInDays(end, start);
-            const hours = differenceInHours(end, start);
-            const minutes = differenceInMinutes(end, start);
-            const seconds = differenceInSeconds(end, start);
+            const years = Math.max(0, differenceInYears(end, start));
+            const months = Math.max(0, differenceInMonths(end, start));
+            const weeks = Math.max(0, differenceInWeeks(end, start));
+            const days = Math.max(0, differenceInDays(end, start));
+            const hours = Math.max(0, differenceInHours(end, start));
+            const minutes = Math.max(0, differenceInMinutes(end, start));
+            const seconds = Math.max(0, differenceInSeconds(end, start));
             // Return the formatted string
-            return format
+            return settingsValues.formatString
                 .replace("${y}", `${years}`)
                 .replace("${M}", `${months}`)
                 .replace("${w}", `${weeks}`)
@@ -74,6 +88,20 @@ const Indicator = GObject.registerClass(
                 .replace("${m}", `${minutes}`)
                 .replace("${s}", `${seconds}`);
         }
+        // Get the date of expected passing away
+        static getEndDate(settingsValues: SettingsValues): Date {
+            // Construct and return the date
+            return add(
+                new Date(
+                    settingsValues.birthYear,
+                    settingsValues.birthMonth - 1,
+                    settingsValues.birthDay,
+                ),
+                {
+                    years: settingsValues.lifeExpectancy,
+                },
+            );
+        }
     },
 );
 
@@ -81,6 +109,12 @@ const Indicator = GObject.registerClass(
 class Extension {
     // UUID of the extension
     readonly #uuid: string;
+    // Settings
+    #settings: Gio.Settings;
+    // Extension position
+    #extensionPosition: "left" | "center" | "right";
+    // Extension index
+    #extensionIndex: number;
     // Indicator
     #indicator: any;
     // Timeout source
@@ -88,6 +122,41 @@ class Extension {
     // Construct the extension
     constructor(uuid: string) {
         this.#uuid = uuid;
+        this.#settings = getSettings();
+        this.#extensionPosition = Extension.getExtensionPosition(
+            this.#settings,
+        );
+        this.#extensionIndex = this.#settings.get_int("extension-index");
+        // Update the indicator on any change to counter settings
+        this.#settings.connect("changed::format-string", () => {
+            this.#indicator.update();
+        });
+        this.#settings.connect("changed::birth-year", () => {
+            this.#indicator.update();
+        });
+        this.#settings.connect("changed::birth-month", () => {
+            this.#indicator.update();
+        });
+        this.#settings.connect("changed::birth-day", () => {
+            this.#indicator.update();
+        });
+        this.#settings.connect("changed::life-expectancy", () => {
+            this.#indicator.update();
+        });
+        // Recreate the indicator in case the extension
+        // index or the extension position are changed
+        this.#settings.connect("changed::extension-position", () => {
+            this.#extensionPosition = Extension.getExtensionPosition(
+                this.#settings,
+            );
+            this.disable();
+            this.enable();
+        });
+        this.#settings.connect("changed::extension-index", () => {
+            this.#extensionIndex = this.#settings.get_int("extension-index");
+            this.disable();
+            this.enable();
+        });
     }
     // Enable the extension
     enable() {
@@ -100,9 +169,9 @@ class Extension {
             // Indicator
             this.#indicator,
             // Index
-            0,
+            this.#extensionIndex,
             // Position
-            "left",
+            this.#extensionPosition,
         );
         // Update the indicator every second
         this.#timeout = Mainloop.timeout_add_seconds(1, () => {
@@ -125,6 +194,19 @@ class Extension {
             this.#indicator.destroy();
             // Stop tracing it
             this.#indicator = null;
+        }
+    }
+    // Get the extension position from the settings
+    static getExtensionPosition(settings: Gio.Settings) {
+        switch (settings.get_enum("extension-position")) {
+            case 0:
+                return "left";
+            case 1:
+                return "center";
+            case 2:
+                return "right";
+            default:
+                return "right";
         }
     }
 }

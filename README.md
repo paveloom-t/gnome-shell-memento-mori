@@ -7,6 +7,7 @@ This extension adds a counter to the panel which counts down the time you have l
 #### Build
 
 ```bash
+yarn
 yarn build
 ln -s "$PWD/dist" "$HOME/.local/share/gnome-shell/extensions/memento-mori@paveloom"
 ```

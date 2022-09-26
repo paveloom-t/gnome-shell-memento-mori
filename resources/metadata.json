@@ -4,5 +4,6 @@
     "uuid": "memento-mori@paveloom",
     "version": 1,
     "shell-version": ["42", "43"],
-    "url": "https://github.com/paveloom-t/gnome-shell-memento-mori"
+    "url": "https://github.com/paveloom-t/gnome-shell-memento-mori",
+    "settings-schema": "org.gnome.shell.extensions.memento-mori"
 }

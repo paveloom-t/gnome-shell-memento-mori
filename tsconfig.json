@@ -5,6 +5,10 @@
         "module": "es2022",
         "moduleResolution": "Node",
         "noPropertyAccessFromIndexSignature": false,
+        "baseUrl": "./src/",
+        "paths": {
+            "@gi-types/*": ["../@gi-types/*"]
+        }
     },
     "include": [
         ".eslintrc.cjs",

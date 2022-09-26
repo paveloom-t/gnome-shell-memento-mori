@@ -1,10 +1,46 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <schemalist gettext-domain="gnome-shell-extensions">
+  <enum id="org.gnome.shell.extensions.memento-mori.extension-position">
+    <value value="0" nick="Left"/>
+    <value value="1" nick="Center"/>
+    <value value="2" nick="Right"/>
+  </enum>
   <schema path="/org/gnome/shell/extensions/memento-mori/" id="org.gnome.shell.extensions.memento-mori">
-    <key type="s" name="key">
-      <default>""</default>
-      <summary>Summary</summary>
-      <description>Description</description>
+    <key type="s" name="format-string">
+      <default>"${w} weeks remaining"</default>
+      <summary>Format string</summary>
+      <description></description>
+    </key>
+    <key type="i" name="birth-year">
+      <default>1990</default>
+      <summary>Birth year</summary>
+      <description></description>
+    </key>
+    <key type="i" name="birth-month">
+      <default>1</default>
+      <summary>Birth month</summary>
+      <description></description>
+    </key>
+    <key type="i" name="birth-day">
+      <default>1</default>
+      <summary>Birth day</summary>
+      <description></description>
+    </key>
+    <key type="i" name="life-expectancy">
+      <default>80</default>
+      <summary>Life expectancy in years</summary>
+      <description></description>
+    </key>
+    <key name="extension-position"
+      enum="org.gnome.shell.extensions.memento-mori.extension-position">
+      <default>"Right"</default>
+      <summary>Extension position</summary>
+      <description></description>
+    </key>
+    <key type="i" name="extension-index">
+      <default>0</default>
+      <summary>Extension index</summary>
+      <description></description>
     </key>
   </schema>
 </schemalist>

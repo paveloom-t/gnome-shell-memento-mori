@@ -1,14 +1,10 @@
 # Yarn
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
-!.yarn/cache
+.yarn
+.yarnrc.yml
+.pnp*
 
 # GJS bindings
-@types
+@gi-types
 docs-lock.json
 
 # Rollup
