@@ -4,6 +4,12 @@ Make every second of your life count. Literally!
 
 This extension adds a counter to the panel which counts down the time you have left based on your birthday and life expectancy.
 
+#### Git mirrors
+
+- [Codeberg](https://codeberg.org/paveloom-t/gnome-shell-memento-mori)
+- [GitHub](https://github.com/paveloom-t/gnome-shell-memento-mori)
+- [GitLab](https://gitlab.com/paveloom-g/typescript/gnome-shell-memento-mori)
+
 #### Build
 
 ```bash
