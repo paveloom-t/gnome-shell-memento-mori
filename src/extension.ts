@@ -111,13 +111,13 @@ class Extension {
     // UUID of the extension
     readonly #uuid: string;
     // Settings
-    #settings: Gio.Settings;
+    #settings: Gio.Settings | null = null;
     // Signals
-    #signals: number[];
+    #signals: number[] = [];
     // Extension position
-    #extensionPosition: "left" | "center" | "right";
+    #extensionPosition: "left" | "center" | "right" = "right";
     // Extension index
-    #extensionIndex: number;
+    #extensionIndex = 0;
     // Indicator
     #indicator: any;
     // Timeout source
@@ -125,56 +125,67 @@ class Extension {
     // Construct the extension
     constructor(uuid: string) {
         this.#uuid = uuid;
-        this.#settings = getSettings();
-        this.#signals = [];
-        this.#extensionPosition = Extension.getExtensionPosition(
-            this.#settings,
-        );
-        this.#extensionIndex = this.#settings.get_int("extension-index");
     }
     // Enable the extension
     enable() {
-        // Add the indicator
-        this.addIndicator();
-        // Update the indicator on any change to counter settings
-        for (const key of [
-            "format-string",
-            "birth-year",
-            "birth-month",
-            "birth-day",
-            "life-expectancy",
-        ]) {
-            const handlerId = this.#settings.connect(`changed::${key}`, () => {
-                this.#indicator.update();
-            });
-            this.#signals.push(handlerId);
-        }
-        // Recreate the indicator in case the extension position is changed
-        {
-            const handlerId = this.#settings.connect(
-                "changed::extension-position",
-                () => {
-                    this.#extensionPosition = Extension.getExtensionPosition(
-                        this.#settings,
-                    );
-                    this.removeIndicator();
-                    this.addIndicator();
-                },
+        // Try to obtain the settings
+        this.#settings = getSettings();
+        // If that's successful
+        if (this.#settings) {
+            // Get the extensions position
+            this.#extensionPosition = Extension.getExtensionPosition(
+                this.#settings,
             );
-            this.#signals.push(handlerId);
-        }
-        // Recreate the indicator in case the extension index is changed
-        {
-            const handlerId = this.#settings.connect(
-                "changed::extension-index",
-                () => {
-                    this.#extensionIndex =
-                        this.#settings.get_int("extension-index");
-                    this.removeIndicator();
-                    this.addIndicator();
-                },
-            );
-            this.#signals.push(handlerId);
+            // Get the extension index
+            this.#extensionIndex = this.#settings.get_int("extension-index");
+            // Add the indicator
+            this.addIndicator();
+            // Update the indicator on any change to counter settings
+            for (const key of [
+                "format-string",
+                "birth-year",
+                "birth-month",
+                "birth-day",
+                "life-expectancy",
+            ]) {
+                const handlerId = this.#settings.connect(
+                    `changed::${key}`,
+                    () => {
+                        this.#indicator.update();
+                    },
+                );
+                this.#signals.push(handlerId);
+            }
+            // Recreate the indicator in case the extension position is changed
+            {
+                const handlerId = this.#settings.connect(
+                    "changed::extension-position",
+                    () => {
+                        if (this.#settings) {
+                            this.#extensionPosition =
+                                Extension.getExtensionPosition(this.#settings);
+                            this.removeIndicator();
+                            this.addIndicator();
+                        }
+                    },
+                );
+                this.#signals.push(handlerId);
+            }
+            // Recreate the indicator in case the extension index is changed
+            {
+                const handlerId = this.#settings.connect(
+                    "changed::extension-index",
+                    () => {
+                        if (this.#settings) {
+                            this.#extensionIndex =
+                                this.#settings.get_int("extension-index");
+                            this.removeIndicator();
+                            this.addIndicator();
+                        }
+                    },
+                );
+                this.#signals.push(handlerId);
+            }
         }
     }
     // Add the indicator to the panel
@@ -217,9 +228,15 @@ class Extension {
     }
     // Disable the extension
     disable() {
+        // Reset the default values of some fields
+        this.#extensionPosition = "right";
+        this.#extensionIndex = 0;
         // If there are connected signals, disconnect them
-        for (const handlerId of this.#signals) {
-            this.#settings.disconnect(handlerId);
+        if (this.#settings) {
+            for (const handlerId of this.#signals) {
+                this.#settings.disconnect(handlerId);
+            }
+            this.#settings = null;
         }
         this.#signals = [];
         // Remove the indicator
