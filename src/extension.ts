@@ -115,13 +115,13 @@ class Extension {
     // Signals
     #signals: number[] = [];
     // Extension position
-    #extensionPosition: "left" | "center" | "right" = "right";
+    #extensionPosition: "left" | "center" | "right" | null = null;
     // Extension index
-    #extensionIndex = 0;
+    #extensionIndex: number | null = null;
     // Indicator
     #indicator: any;
     // Timeout source
-    #timeout = 0;
+    #timeout: number | null = null;
     // Construct the extension
     constructor(uuid: string) {
         this.#uuid = uuid;
@@ -192,17 +192,20 @@ class Extension {
     addIndicator() {
         // Initialize a new indicator
         this.#indicator = new Indicator();
-        // Add the indicator to the panel
-        Main.panel.addToStatusArea(
-            // Role
-            this.#uuid,
-            // Indicator
-            this.#indicator,
-            // Index
-            this.#extensionIndex,
-            // Position
-            this.#extensionPosition,
-        );
+        // If the extension index and extension position are defined
+        if (this.#extensionIndex != null && this.#extensionPosition) {
+            // Add the indicator to the panel
+            Main.panel.addToStatusArea(
+                // Role
+                this.#uuid,
+                // Indicator
+                this.#indicator,
+                // Index
+                this.#extensionIndex,
+                // Position
+                this.#extensionPosition,
+            );
+        }
         // Update the indicator every second
         this.#timeout = Mainloop.timeout_add_seconds(1, () => {
             // Update the indicator
@@ -217,6 +220,7 @@ class Extension {
         if (this.#timeout) {
             // Remove the timeout
             Mainloop.source_remove(this.#timeout);
+            this.#timeout = null;
         }
         // If the indicator exists
         if (this.#indicator) {
@@ -229,8 +233,8 @@ class Extension {
     // Disable the extension
     disable() {
         // Reset the default values of some fields
-        this.#extensionPosition = "right";
-        this.#extensionIndex = 0;
+        this.#extensionPosition = null;
+        this.#extensionIndex = null;
         // If there are connected signals, disconnect them
         if (this.#settings) {
             for (const handlerId of this.#signals) {
