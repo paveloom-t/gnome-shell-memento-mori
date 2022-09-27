@@ -112,6 +112,8 @@ class Extension {
     readonly #uuid: string;
     // Settings
     #settings: Gio.Settings;
+    // Signals
+    #signals: number[];
     // Extension position
     #extensionPosition: "left" | "center" | "right";
     // Extension index
@@ -124,43 +126,59 @@ class Extension {
     constructor(uuid: string) {
         this.#uuid = uuid;
         this.#settings = getSettings();
+        this.#signals = [];
         this.#extensionPosition = Extension.getExtensionPosition(
             this.#settings,
         );
         this.#extensionIndex = this.#settings.get_int("extension-index");
-        // Update the indicator on any change to counter settings
-        this.#settings.connect("changed::format-string", () => {
-            this.#indicator.update();
-        });
-        this.#settings.connect("changed::birth-year", () => {
-            this.#indicator.update();
-        });
-        this.#settings.connect("changed::birth-month", () => {
-            this.#indicator.update();
-        });
-        this.#settings.connect("changed::birth-day", () => {
-            this.#indicator.update();
-        });
-        this.#settings.connect("changed::life-expectancy", () => {
-            this.#indicator.update();
-        });
-        // Recreate the indicator in case the extension
-        // index or the extension position are changed
-        this.#settings.connect("changed::extension-position", () => {
-            this.#extensionPosition = Extension.getExtensionPosition(
-                this.#settings,
-            );
-            this.disable();
-            this.enable();
-        });
-        this.#settings.connect("changed::extension-index", () => {
-            this.#extensionIndex = this.#settings.get_int("extension-index");
-            this.disable();
-            this.enable();
-        });
     }
     // Enable the extension
     enable() {
+        // Add the indicator
+        this.addIndicator();
+        // Update the indicator on any change to counter settings
+        for (const key of [
+            "format-string",
+            "birth-year",
+            "birth-month",
+            "birth-day",
+            "life-expectancy",
+        ]) {
+            const handlerId = this.#settings.connect(`changed::${key}`, () => {
+                this.#indicator.update();
+            });
+            this.#signals.push(handlerId);
+        }
+        // Recreate the indicator in case the extension position is changed
+        {
+            const handlerId = this.#settings.connect(
+                "changed::extension-position",
+                () => {
+                    this.#extensionPosition = Extension.getExtensionPosition(
+                        this.#settings,
+                    );
+                    this.removeIndicator();
+                    this.addIndicator();
+                },
+            );
+            this.#signals.push(handlerId);
+        }
+        // Recreate the indicator in case the extension index is changed
+        {
+            const handlerId = this.#settings.connect(
+                "changed::extension-index",
+                () => {
+                    this.#extensionIndex =
+                        this.#settings.get_int("extension-index");
+                    this.removeIndicator();
+                    this.addIndicator();
+                },
+            );
+            this.#signals.push(handlerId);
+        }
+    }
+    // Add the indicator to the panel
+    addIndicator() {
         // Initialize a new indicator
         this.#indicator = new Indicator();
         // Add the indicator to the panel
@@ -182,8 +200,8 @@ class Extension {
             return GLib.SOURCE_CONTINUE;
         });
     }
-    // Disable the extension
-    disable() {
+    // Remove the indicator from the panel
+    removeIndicator() {
         // If the timeout is set
         if (this.#timeout) {
             // Remove the timeout
@@ -196,6 +214,16 @@ class Extension {
             // Stop tracing it
             this.#indicator = null;
         }
+    }
+    // Disable the extension
+    disable() {
+        // If there are connected signals, disconnect them
+        for (const handlerId of this.#signals) {
+            this.#settings.disconnect(handlerId);
+        }
+        this.#signals = [];
+        // Remove the indicator
+        this.removeIndicator();
     }
     // Get the extension position from the settings
     static getExtensionPosition(settings: Gio.Settings) {
