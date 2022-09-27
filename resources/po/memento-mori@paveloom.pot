@@ -1,0 +1,80 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+#: src/prefs.ts:145
+msgid "Appearance"
+msgstr ""
+
+#: src/prefs.ts:50
+msgid ""
+"Available modifiers for representing\n"
+"total number of <blank> remaining:\n"
+"  - ${y}: Years\n"
+"  - ${M}: Months\n"
+"  - ${w}: Weeks\n"
+"  - ${d}: Days\n"
+"  - ${h}: Hours\n"
+"  - ${m}: Minutes\n"
+"  - ${s}: Seconds"
+msgstr ""
+
+#: src/prefs.ts:67
+msgid "Birthday"
+msgstr ""
+
+#: src/prefs.ts:151
+msgid "Center"
+msgstr ""
+
+#: src/prefs.ts:25
+msgid "Counter"
+msgstr ""
+
+#: src/prefs.ts:170
+msgid "Extension index"
+msgstr ""
+
+#: src/prefs.ts:155
+msgid "Extension position"
+msgstr ""
+
+#: src/prefs.ts:30
+msgid "Format string"
+msgstr ""
+
+#: src/prefs.ts:31
+msgid "Hover over the entry to get more info"
+msgstr ""
+
+#: src/prefs.ts:171
+msgid "Index of the extension in the panel"
+msgstr ""
+
+#: src/prefs.ts:150
+msgid "Left"
+msgstr ""
+
+#: src/prefs.ts:119
+msgid "Life expectancy"
+msgstr ""
+
+#: src/extension.ts:46
+msgid "Memento Mori Extension"
+msgstr ""
+
+#: src/prefs.ts:120
+msgid "Number of years you expect to live through"
+msgstr ""
+
+#: src/prefs.ts:156
+msgid "Position of the extension in the panel"
+msgstr ""
+
+#: src/prefs.ts:152
+msgid "Right"
+msgstr ""
+
+#: src/prefs.ts:68
+msgid "Your birthday in the form YYYY/MM/DD"
+msgstr ""

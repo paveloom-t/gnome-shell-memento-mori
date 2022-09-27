@@ -24,7 +24,8 @@ import { unpackSettings, SettingsValues } from "utils";
 const Main = imports.ui.main;
 const Mainloop = imports.mainloop;
 const { Button } = imports.ui.panelMenu;
-const { getSettings } = imports.misc.extensionUtils;
+const { getSettings, initTranslations } = imports.misc.extensionUtils;
+const _ = imports.misc.extensionUtils.gettext;
 
 // Indicator
 const Indicator = GObject.registerClass(
@@ -42,7 +43,7 @@ const Indicator = GObject.registerClass(
                 // Menu alignment
                 0,
                 // Name of the button
-                "Momento Mori Extension",
+                _("Memento Mori Extension"),
                 // Don't create the menu?
                 true,
             );
@@ -213,6 +214,8 @@ class Extension {
 
 // Initialize the extension
 export default function init(meta: { uuid: string }): Extension {
+    // Initialize translations
+    initTranslations(meta.uuid);
     // Construct and return the extension
     return new Extension(meta.uuid);
 }

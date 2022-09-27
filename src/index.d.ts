@@ -10,6 +10,7 @@ declare const imports: {
             getCurrentExtension: () => any;
             openPrefs: () => void;
             getSettings: () => any;
+            gettext: (arg: string) => string;
         };
         config: any;
     };
@@ -29,4 +30,4 @@ declare const imports: {
     };
 };
 
-declare const _: (arg: string) => string;
+declare module "fill-pot-po";

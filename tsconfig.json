@@ -7,9 +7,16 @@
         "noPropertyAccessFromIndexSignature": false,
         "baseUrl": "./src/",
     },
+    "ts-node": {
+        "files": true,
+        "compilerOptions": {
+          "module": "CommonJS"
+        }
+    },
     "include": [
         ".eslintrc.cjs",
         "rollup.config.js",
+        "scripts/**/*.ts",
         "src/**/*.ts"
     ],
 }

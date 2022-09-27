@@ -10,7 +10,8 @@ import dedent from "ts-dedent";
 
 import { unpackSettings, formatBirthday } from "utils";
 
-const { getSettings } = imports.misc.extensionUtils;
+const { getSettings, initTranslations } = imports.misc.extensionUtils;
+const _ = imports.misc.extensionUtils.gettext;
 
 function fillPreferencesWindow(window: Adw.PreferencesWindow) {
     // Unpack the settings
@@ -21,13 +22,13 @@ function fillPreferencesWindow(window: Adw.PreferencesWindow) {
     window.add(preferencesPage);
     // Add the counter group of preferences to the page
     const counterGroup = new Adw.PreferencesGroup({
-        title: "Counter",
+        title: _("Counter"),
     });
     preferencesPage.add(counterGroup);
     // Add an action row for the format string
     const formatStringActionRow = new Adw.ActionRow({
-        title: "Format string",
-        subtitle: "Hover over the entry to get more info",
+        title: _("Format string"),
+        subtitle: _("Hover over the entry to get more info"),
     });
     counterGroup.add(formatStringActionRow);
     // Prepare an entry buffer for the next entry
@@ -45,24 +46,26 @@ function fillPreferencesWindow(window: Adw.PreferencesWindow) {
         margin_top: 10,
         margin_bottom: 10,
         placeholder_text: "${w} weeks remaining",
-        tooltip_text: dedent`
-        Available modifiers for representing
-        total number of <blank> remaining:
-          - \${y}: Years
-          - \${M}: Months
-          - \${w}: Weeks
-          - \${d}: Days
-          - \${h}: Hours
-          - \${m}: Minutes
-          - \${s}: Seconds
-        `,
+        tooltip_text: dedent(
+            _(
+                "Available modifiers for representing\n" +
+                    "total number of <blank> remaining:\n" +
+                    "  - ${y}: Years\n" +
+                    "  - ${M}: Months\n" +
+                    "  - ${w}: Weeks\n" +
+                    "  - ${d}: Days\n" +
+                    "  - ${h}: Hours\n" +
+                    "  - ${m}: Minutes\n" +
+                    "  - ${s}: Seconds",
+            ),
+        ),
     });
     formatStringActionRow.add_suffix(formatStringEntry);
     formatStringActionRow.set_activatable_widget(formatStringEntry);
     // Add an action row for the birthday
     const birthdayActionRow = new Adw.ActionRow({
-        title: "Birthday",
-        subtitle: "Your birthday in the form YYYY/MM/DD",
+        title: _("Birthday"),
+        subtitle: _("Your birthday in the form YYYY/MM/DD"),
     });
     counterGroup.add(birthdayActionRow);
     // Add a menu button to the last action row
@@ -113,8 +116,8 @@ function fillPreferencesWindow(window: Adw.PreferencesWindow) {
     birthdayCalendar.connect("next-month", (c) => syncSettings(c));
     // Add an action row for the life expectancy
     const lifeExpectancyActionRow = new Adw.ActionRow({
-        title: "Life expectancy",
-        subtitle: "Number of years you expect to live through",
+        title: _("Life expectancy"),
+        subtitle: _("Number of years you expect to live through"),
     });
     counterGroup.add(lifeExpectancyActionRow);
     // Add a spin button to the last action row
@@ -139,18 +142,18 @@ function fillPreferencesWindow(window: Adw.PreferencesWindow) {
     );
     // Add the appearance group of preferences to the page
     const appearanceGroup = new Adw.PreferencesGroup({
-        title: "Appearance",
+        title: _("Appearance"),
     });
     preferencesPage.add(appearanceGroup);
     // Prepare a string list for the next combo row
     const extensionPositionOptions = new Gtk.StringList();
-    extensionPositionOptions.append("Left");
-    extensionPositionOptions.append("Center");
-    extensionPositionOptions.append("Right");
+    extensionPositionOptions.append(_("Left"));
+    extensionPositionOptions.append(_("Center"));
+    extensionPositionOptions.append(_("Right"));
     // Add a combo row for the extension position
     const extensionPositionComboRow = new Adw.ComboRow({
-        title: "Extension position",
-        subtitle: "Position of the extension in the panel",
+        title: _("Extension position"),
+        subtitle: _("Position of the extension in the panel"),
         model: extensionPositionOptions,
         selected: settingsValues.extensionPosition,
     });
@@ -164,8 +167,8 @@ function fillPreferencesWindow(window: Adw.PreferencesWindow) {
     appearanceGroup.add(extensionPositionComboRow);
     // Add an action row for the extension index
     const extensionIndexActionRow = new Adw.ActionRow({
-        title: "Extension index",
-        subtitle: "Index of the extension in the panel",
+        title: _("Extension index"),
+        subtitle: _("Index of the extension in the panel"),
     });
     appearanceGroup.add(extensionIndexActionRow);
     // Add a spin button to the last action row
@@ -191,8 +194,9 @@ function fillPreferencesWindow(window: Adw.PreferencesWindow) {
 }
 
 // Initialize the preferences
-function init() {
-    // The localization initialization will go here
+function init(meta: { uuid: string }) {
+    // Initialize translations
+    initTranslations(meta.uuid);
 }
 
 export default { init, fillPreferencesWindow };

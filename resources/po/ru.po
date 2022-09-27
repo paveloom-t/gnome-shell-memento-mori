@@ -1,0 +1,90 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"X-Generator: fill-pot-po/2.1.10\n"
+
+#: src/extension.ts:46
+msgid "Memento Mori Extension"
+msgstr "Memento Mori Расширение"
+
+#: src/prefs.ts:25
+msgid "Counter"
+msgstr "Счетчик"
+
+#: src/prefs.ts:30
+msgid "Format string"
+msgstr "Строка формата"
+
+#: src/prefs.ts:31
+msgid "Hover over the entry to get more info"
+msgstr "Наведи курсор над полем ввода для дополнительной информации"
+
+#: src/prefs.ts:50
+msgid ""
+"Available modifiers for representing\n"
+"total number of <blank> remaining:\n"
+"  - ${y}: Years\n"
+"  - ${M}: Months\n"
+"  - ${w}: Weeks\n"
+"  - ${d}: Days\n"
+"  - ${h}: Hours\n"
+"  - ${m}: Minutes\n"
+"  - ${s}: Seconds"
+msgstr ""
+"Доступные модификаторы для представления\n"
+"полного числа оставшихся <вставь сюда>:\n"
+"  - ${y}: Лет\n"
+"  - ${M}: Месяцев\n"
+"  - ${w}: Недель\n"
+"  - ${d}: Дней\n"
+"  - ${h}: Часов\n"
+"  - ${m}: Минут\n"
+"  - ${s}: Секунд"
+
+#: src/prefs.ts:67
+msgid "Birthday"
+msgstr "День рождения"
+
+#: src/prefs.ts:68
+msgid "Your birthday in the form YYYY/MM/DD"
+msgstr "Твой день рождения в формате ГГГГ/ММ/ДД"
+
+#: src/prefs.ts:119
+msgid "Life expectancy"
+msgstr "Ожидаемая продолжительность жизни"
+
+#: src/prefs.ts:120
+msgid "Number of years you expect to live through"
+msgstr "Число лет, которые ты ожидаешь прожить"
+
+#: src/prefs.ts:145
+msgid "Appearance"
+msgstr "Внешний вид"
+
+#: src/prefs.ts:150
+msgid "Left"
+msgstr "Слева"
+
+#: src/prefs.ts:151
+msgid "Center"
+msgstr "Посередине"
+
+#: src/prefs.ts:152
+msgid "Right"
+msgstr "Справа"
+
+#: src/prefs.ts:155
+msgid "Extension position"
+msgstr "Положение расширения"
+
+#: src/prefs.ts:156
+msgid "Position of the extension in the panel"
+msgstr "Положение расширения на панели"
+
+#: src/prefs.ts:170
+msgid "Extension index"
+msgstr "Индекс расширения"
+
+#: src/prefs.ts:171
+msgid "Index of the extension in the panel"
+msgstr "Индекс расширения на панели"
