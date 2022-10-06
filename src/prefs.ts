@@ -45,10 +45,10 @@ function fillPreferencesWindow(window: Adw.PreferencesWindow) {
         buffer: formatStringEntryBuffer,
         margin_top: 10,
         margin_bottom: 10,
-        placeholder_text: "${w} weeks remaining",
+        placeholder_text: _("${w} weeks remaining"),
         tooltip_text: dedent(
             _(
-                "Available modifiers for representing\n" +
+                "Available variables for representing\n" +
                     "total number of <blank> remaining:\n" +
                     "  - ${y}: Years\n" +
                     "  - ${M}: Months\n" +

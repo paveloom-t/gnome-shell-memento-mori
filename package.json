@@ -5,7 +5,7 @@
         "clean": "yarn run clean:ts",
         "build:ts": "yarn run clean:ts && rollup -c",
         "clean:ts": "bash -c 'rm -rf dist'",
-        "build:extension": "yarn run build:schema && yarn run gen:locale",
+        "build:extension": "yarn run gen:locale && yarn run build:schema",
         "build:schema": "yarn run clean:schema && glib-compile-schemas resources/schemas --targetdir=dist/schemas/",
         "clean:schema": "bash -c 'rm -rf dist/schemas/*.compiled'",
         "gen:locale": "yarn run ts-node scripts/generateLocale.ts",

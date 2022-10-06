@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<schemalist gettext-domain="gnome-shell-extensions">
+<schemalist gettext-domain="memento-mori@paveloom">
   <enum id="org.gnome.shell.extensions.memento-mori.extension-position">
     <value value="0" nick="Left"/>
     <value value="1" nick="Center"/>
@@ -7,7 +7,7 @@
   </enum>
   <schema path="/org/gnome/shell/extensions/memento-mori/" id="org.gnome.shell.extensions.memento-mori">
     <key type="s" name="format-string">
-      <default>"${w} weeks remaining"</default>
+      <default l10n="messages">"${w} weeks remaining"</default>
       <summary>Format string</summary>
       <description></description>
     </key>

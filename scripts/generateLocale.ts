@@ -8,7 +8,10 @@ import fs from "fs";
 import gettextParser from "gettext-parser";
 import glob from "glob";
 import path from "path";
+import type { Element } from "gettext-extractor/dist/html/parser";
+import { ElementSelectorSet } from "gettext-extractor/dist/html/selector";
 import { GettextExtractor, JsExtractors } from "gettext-extractor";
+import { HtmlUtils } from "gettext-extractor/dist/html/utils";
 
 // Define the path to the directory with resources
 const RESOURCES_DIR = path.resolve(__dirname, "..", "resources");
@@ -33,7 +36,7 @@ function extractStrings() {
     fs.mkdirSync(PO_DIR, { recursive: true });
     // Initialize an extractor
     const extractor = new GettextExtractor();
-    // Parse the files
+    // Parse the source files
     extractor
         .createJsParser([
             JsExtractors.callExpression("_", {
@@ -51,6 +54,29 @@ function extractStrings() {
             }),
         ])
         .parseFilesGlob("./src/**/*.@(ts|js|tsx|jsx)");
+    // Parse the schema file
+    extractor
+        .createHtmlParser([
+            (node, _fileName, addMessage) => {
+                const selectors = new ElementSelectorSet("default[l10n]");
+                if (typeof (node as Element).tagName !== "string") {
+                    return;
+                }
+                const element = node as Element;
+                if (selectors.anyMatch(element)) {
+                    const text = HtmlUtils.getElementContent(element, {
+                        trimWhiteSpace: true,
+                        preserveIndentation: false,
+                        replaceNewLines: false,
+                    });
+
+                    if (typeof text === "string") {
+                        addMessage({ text });
+                    }
+                }
+            },
+        ])
+        .parseFilesGlob("./resources/schemas/*.gschema.xml");
     // Save the `.pot` file
     extractor.savePotFile(POT_FILE);
     // Print statistics

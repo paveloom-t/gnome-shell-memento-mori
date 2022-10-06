@@ -2,13 +2,21 @@ msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 
+#: ./resources/schemas/org.gnome.shell.extensions.memento-mori.gschema.xml:10
+msgid "\"${w} weeks remaining\""
+msgstr ""
+
+#: src/prefs.ts:48
+msgid "${w} weeks remaining"
+msgstr ""
+
 #: src/prefs.ts:145
 msgid "Appearance"
 msgstr ""
 
 #: src/prefs.ts:50
 msgid ""
-"Available modifiers for representing\n"
+"Available variables for representing\n"
 "total number of <blank> remaining:\n"
 "  - ${y}: Years\n"
 "  - ${M}: Months\n"
