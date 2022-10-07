@@ -23,11 +23,11 @@ msgstr "Строка формата"
 msgid "Hover over the entry to get more info"
 msgstr "Наведи курсор над полем ввода для дополнительной информации"
 
-#: src/prefs.ts:48
+#: src/prefs.ts:49
 msgid "${w} weeks remaining"
 msgstr "${w} недель остаётся"
 
-#: src/prefs.ts:50
+#: src/prefs.ts:51
 msgid ""
 "Available variables for representing\n"
 "total number of <blank> remaining:\n"
@@ -49,50 +49,50 @@ msgstr ""
 "  - ${m}: Минут\n"
 "  - ${s}: Секунд"
 
-#: src/prefs.ts:67
+#: src/prefs.ts:68
 msgid "Birthday"
 msgstr "День рождения"
 
-#: src/prefs.ts:68
+#: src/prefs.ts:69
 msgid "Your birthday in the form YYYY/MM/DD"
 msgstr "Твой день рождения в формате ГГГГ/ММ/ДД"
 
-#: src/prefs.ts:119
+#: src/prefs.ts:120
 msgid "Life expectancy"
 msgstr "Ожидаемая продолжительность жизни"
 
-#: src/prefs.ts:120
-msgid "Number of years you expect to live through"
-msgstr "Число лет, которые ты ожидаешь прожить"
+#: src/prefs.ts:121
+msgid "Life expectancy at birth in years"
+msgstr "Ожидаемая продолжительность жизни при рождении в годах"
 
-#: src/prefs.ts:145
+#: src/prefs.ts:146
 msgid "Appearance"
 msgstr "Внешний вид"
 
-#: src/prefs.ts:150
+#: src/prefs.ts:151
 msgid "Left"
 msgstr "Слева"
 
-#: src/prefs.ts:151
+#: src/prefs.ts:152
 msgid "Center"
 msgstr "Посередине"
 
-#: src/prefs.ts:152
+#: src/prefs.ts:153
 msgid "Right"
 msgstr "Справа"
 
-#: src/prefs.ts:155
+#: src/prefs.ts:156
 msgid "Extension position"
 msgstr "Положение расширения"
 
-#: src/prefs.ts:156
+#: src/prefs.ts:157
 msgid "Position of the extension in the panel"
 msgstr "Положение расширения на панели"
 
-#: src/prefs.ts:170
+#: src/prefs.ts:171
 msgid "Extension index"
 msgstr "Индекс расширения"
 
-#: src/prefs.ts:171
+#: src/prefs.ts:172
 msgid "Index of the extension in the panel"
 msgstr "Индекс расширения на панели"

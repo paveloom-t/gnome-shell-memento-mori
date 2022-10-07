@@ -45,6 +45,7 @@ function fillPreferencesWindow(window: Adw.PreferencesWindow) {
         buffer: formatStringEntryBuffer,
         margin_top: 10,
         margin_bottom: 10,
+        width_request: 168,
         placeholder_text: _("${w} weeks remaining"),
         tooltip_text: dedent(
             _(
@@ -117,7 +118,7 @@ function fillPreferencesWindow(window: Adw.PreferencesWindow) {
     // Add an action row for the life expectancy
     const lifeExpectancyActionRow = new Adw.ActionRow({
         title: _("Life expectancy"),
-        subtitle: _("Number of years you expect to live through"),
+        subtitle: _("Life expectancy at birth in years"),
     });
     counterGroup.add(lifeExpectancyActionRow);
     // Add a spin button to the last action row

@@ -6,15 +6,15 @@ msgstr ""
 msgid "\"${w} weeks remaining\""
 msgstr ""
 
-#: src/prefs.ts:48
+#: src/prefs.ts:49
 msgid "${w} weeks remaining"
 msgstr ""
 
-#: src/prefs.ts:145
+#: src/prefs.ts:146
 msgid "Appearance"
 msgstr ""
 
-#: src/prefs.ts:50
+#: src/prefs.ts:51
 msgid ""
 "Available variables for representing\n"
 "total number of <blank> remaining:\n"
@@ -27,11 +27,11 @@ msgid ""
 "  - ${s}: Seconds"
 msgstr ""
 
-#: src/prefs.ts:67
+#: src/prefs.ts:68
 msgid "Birthday"
 msgstr ""
 
-#: src/prefs.ts:151
+#: src/prefs.ts:152
 msgid "Center"
 msgstr ""
 
@@ -39,11 +39,11 @@ msgstr ""
 msgid "Counter"
 msgstr ""
 
-#: src/prefs.ts:170
+#: src/prefs.ts:171
 msgid "Extension index"
 msgstr ""
 
-#: src/prefs.ts:155
+#: src/prefs.ts:156
 msgid "Extension position"
 msgstr ""
 
@@ -55,34 +55,34 @@ msgstr ""
 msgid "Hover over the entry to get more info"
 msgstr ""
 
-#: src/prefs.ts:171
+#: src/prefs.ts:172
 msgid "Index of the extension in the panel"
 msgstr ""
 
-#: src/prefs.ts:150
+#: src/prefs.ts:151
 msgid "Left"
 msgstr ""
 
-#: src/prefs.ts:119
+#: src/prefs.ts:120
 msgid "Life expectancy"
+msgstr ""
+
+#: src/prefs.ts:121
+msgid "Life expectancy at birth in years"
 msgstr ""
 
 #: src/extension.ts:46
 msgid "Memento Mori Extension"
 msgstr ""
 
-#: src/prefs.ts:120
-msgid "Number of years you expect to live through"
-msgstr ""
-
-#: src/prefs.ts:156
+#: src/prefs.ts:157
 msgid "Position of the extension in the panel"
 msgstr ""
 
-#: src/prefs.ts:152
+#: src/prefs.ts:153
 msgid "Right"
 msgstr ""
 
-#: src/prefs.ts:68
+#: src/prefs.ts:69
 msgid "Your birthday in the form YYYY/MM/DD"
 msgstr ""
