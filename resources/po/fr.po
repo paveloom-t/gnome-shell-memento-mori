@@ -1,32 +1,31 @@
-# FRENCH TRANSLATION OF GNOME EXTENSION "MEMENTO MORI"
-# This file is distributed under the same license as the Memento Mori extension.
-# Simon Elst <kirmaha@duck.com>, 2022.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: \n"
-"Last-Translator: Simon Elst <kirmaha@duck.com>\n"
-"Language-Team: \n"
-"Language: fr\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.1.1\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"X-Generator: fill-pot-po/2.1.10\n"
 
-#: resources/schemas/org.gnome.shell.extensions.memento-mori.gschema.xml:10
+#: ./resources/schemas/org.gnome.shell.extensions.memento-mori.gschema.xml:10
 msgid "\"${w} weeks remaining\""
 msgstr "\"${w} semaines restantes\""
+
+#: src/extension.ts:46
+msgid "Memento Mori Extension"
+msgstr "Extension Memento Mori"
+
+#: src/prefs.ts:25
+msgid "Counter"
+msgstr "Compteur"
+
+#: src/prefs.ts:30
+msgid "Format string"
+msgstr "Format de chaîne"
+
+#: src/prefs.ts:31
+msgid "Hover over the entry to get more info"
+msgstr "Survolez le champ pour plus d’informations"
 
 #: src/prefs.ts:49
 msgid "${w} weeks remaining"
 msgstr "${w} semaines restantes"
-
-#: src/prefs.ts:146
-msgid "Appearance"
-msgstr "Apparence"
 
 #: src/prefs.ts:51
 msgid ""
@@ -54,37 +53,9 @@ msgstr ""
 msgid "Birthday"
 msgstr "Anniversaire"
 
-#: src/prefs.ts:152
-msgid "Center"
-msgstr "Centre"
-
-#: src/prefs.ts:25
-msgid "Counter"
-msgstr "Compteur"
-
-#: src/prefs.ts:171
-msgid "Extension index"
-msgstr "Index de l’extension"
-
-#: src/prefs.ts:156
-msgid "Extension position"
-msgstr "Position de l’extension"
-
-#: src/prefs.ts:30
-msgid "Format string"
-msgstr "Format de chaîne"
-
-#: src/prefs.ts:31
-msgid "Hover over the entry to get more info"
-msgstr "Survolez le champ pour plus d’informations"
-
-#: src/prefs.ts:172
-msgid "Index of the extension in the panel"
-msgstr "Index de l’extension dans la barre"
-
-#: src/prefs.ts:151
-msgid "Left"
-msgstr "Gauche"
+#: src/prefs.ts:69
+msgid "Your birthday in the form YYYY/MM/DD"
+msgstr "Votre anniversaire dans le format AAAA/MM/JJ"
 
 #: src/prefs.ts:120
 msgid "Life expectancy"
@@ -94,21 +65,34 @@ msgstr "Espérance de vie"
 msgid "Life expectancy at birth in years"
 msgstr "Espérance de vie à la naissance, en années"
 
-#: src/extension.ts:46
-msgid "Memento Mori Extension"
-msgstr "Extension Memento Mori"
+#: src/prefs.ts:146
+msgid "Appearance"
+msgstr "Apparence"
 
-#: src/prefs.ts:157
-msgid "Position of the extension in the panel"
-msgstr "Position de l’extension dans la barre"
+#: src/prefs.ts:151
+msgid "Left"
+msgstr "Gauche"
+
+#: src/prefs.ts:152
+msgid "Center"
+msgstr "Centre"
 
 #: src/prefs.ts:153
 msgid "Right"
 msgstr "Droite"
 
-#: src/prefs.ts:69
-msgid "Your birthday in the form YYYY/MM/DD"
-msgstr "Votre anniversaire dans le format AAAA/MM/JJ"
+#: src/prefs.ts:156
+msgid "Extension position"
+msgstr "Position de l’extension"
 
-#~ msgid "Number of years you expect to live through"
-#~ msgstr "Nombre d’années que vous vous attendez à avoir vécues"
+#: src/prefs.ts:157
+msgid "Position of the extension in the panel"
+msgstr "Position de l’extension dans la barre"
+
+#: src/prefs.ts:171
+msgid "Extension index"
+msgstr "Index de l’extension"
+
+#: src/prefs.ts:172
+msgid "Index of the extension in the panel"
+msgstr "Index de l’extension dans la barre"

@@ -33,4 +33,13 @@ env MUTTER_DEBUG_DUMMY_MODE_SPECS=1280x720 \
   dbus-run-session -- gnome-shell --nested --wayland
 ```
 
+#### Translations
+
 To add a translation, contribute a `.po` file. See [`resources/po`](resources/po) for examples.
+
+- [English](resorces/po/en.po)
+  - Pavel Sobolev <paveloom@riseup.net>
+- [French](resources/po/fr.po)
+  - Simon Elst <kirmaha@duck.com>
+- [Russian](resources/po/ru.po)
+  - Pavel Sobolev <paveloom@riseup.net>
