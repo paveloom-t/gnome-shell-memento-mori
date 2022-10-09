@@ -18,7 +18,7 @@ msgstr ""
 
 #: resources/schemas/org.gnome.shell.extensions.memento-mori.gschema.xml:10
 msgid "\"${w} weeks remaining\""
-msgstr "« ${w} settimane rimanenti »"
+msgstr "" ${w} settimane rimanenti ""
 
 #: src/prefs.ts:49
 msgid "${w} weeks remaining"
