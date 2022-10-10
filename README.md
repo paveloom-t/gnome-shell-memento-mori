@@ -41,7 +41,7 @@ To add a translation, contribute a `.po` file. See [`resources/po`](resources/po
   - Pavel Sobolev <paveloom@riseup.net>
 - [French](resources/po/fr.po)
   - Simon Elst <kirmaha@duck.com>
-- [Italian](resources/po/it.po)
+- [Italian](resources/po/it_IT.po)
   - Jibus <jibus@tutanota.com>
 - [Russian](resources/po/ru.po)
   - Pavel Sobolev <paveloom@riseup.net>
