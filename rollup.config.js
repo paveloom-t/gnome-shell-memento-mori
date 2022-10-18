@@ -10,7 +10,6 @@ const globals = {
     "@gi-types/clutter10": "imports.gi.Clutter",
     "@gi-types/gio2": "imports.gi.Gio",
     "@gi-types/glib2": "imports.gi.GLib",
-    "@gi-types/glib2": "imports.gi.GLib",
     "@gi-types/gobject2": "imports.gi.GObject",
     "@gi-types/gtk4": "imports.gi.Gtk",
     "@gi-types/st1": "imports.gi.St",

@@ -1,19 +1,17 @@
 {
     "name": "gnome-shell-memento-mori",
     "scripts": {
-        "build": "yarn run build:ts && yarn run build:extension",
-        "clean": "yarn run clean:ts",
-        "build:ts": "yarn run clean:ts && rollup -c",
-        "clean:ts": "bash -c 'rm -rf dist'",
-        "build:extension": "yarn run gen:locale && yarn run build:schema",
-        "build:schema": "yarn run clean:schema && glib-compile-schemas resources/schemas --targetdir=dist/schemas/",
-        "clean:schema": "bash -c 'rm -rf dist/schemas/*.compiled'",
-        "gen:locale": "yarn run ts-node scripts/generateLocale.ts",
-        "build:package": "bash -c 'yarn run build && cd dist && zip -qr memento-mori@paveloom.zip .'",
-        "watch": "yarn run build && yarn run rollup -c --watch",
+        "build": "bun run build:ts && bun run build:extension",
+        "clean": "bun run clean:ts && rm -rf node_modules",
+        "build:ts": "bun run clean:ts && rollup -c",
+        "clean:ts": "rm -rf dist",
+        "build:extension": "bun run gen:locale && bun run build:schema",
+        "build:schema": "glib-compile-schemas resources/schemas --targetdir=dist/schemas",
+        "gen:locale": "bun run ts-node scripts/generateLocale.ts",
+        "build:package": "bun run build && cd dist && zip -qr memento-mori@paveloom.zip .",
+        "watch": "bun run build && bun run rollup -c --watch",
         "lint": "eslint ."
     },
-    "packageManager": "yarn@3.2.3",
     "devDependencies": {
         "@gi-types/adw1": "^1.1.1",
         "@gi-types/clutter10": "^10.0.1",

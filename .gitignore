@@ -1,14 +1,9 @@
-# Yarn
-.yarn
-.yarnrc.yml
-.pnp*
-
-# GJS bindings
-@gi-types
-docs-lock.json
+# Bun
+node_modules
 
 # Rollup
 dist
 
-# Extra
-node_modules
+# GJS bindings
+@gi-types
+docs-lock.json

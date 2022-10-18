@@ -12,19 +12,21 @@ This extension adds a counter to the panel which counts down the time you have l
 
 #### Build
 
+Make sure you have [Bun](https://bun.sh) installed. Then, run
+
 ```bash
-yarn
-yarn build
+bun install
+bun run build
 ln -s "$PWD/dist" "$HOME/.local/share/gnome-shell/extensions/memento-mori@paveloom"
 ```
 
-To archive the result after the build, run `yarn build:package` instead of `yarn build`.
+To archive the result after the build, run `bun run build:package` instead of `bun run build`.
 
 #### Develop
 
-You can lint the code with `yarn lint`.
+You can lint the code with `bun run lint`.
 
-You can run `yarn watch` to keep the bundle updated with changes.
+You can run `bun run watch` to keep the bundle updated with changes.
 
 On Wayland, test the extension by running
 
