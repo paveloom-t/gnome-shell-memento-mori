@@ -39,6 +39,8 @@ env MUTTER_DEBUG_DUMMY_MODE_SPECS=1280x720 \
 
 To add a translation, contribute a `.po` file. See [`resources/po`](resources/po) for examples.
 
+- [Dutch](resources/po/nl.po)
+  - Heimen Stoffels <vistausss@fastmail.com>
 - [English](resources/po/en.po)
   - Pavel Sobolev <paveloom@riseup.net>
 - [French](resources/po/fr.po)

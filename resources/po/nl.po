@@ -1,0 +1,98 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"X-Generator: fill-pot-po/2.1.10\n"
+
+#: ./resources/schemas/org.gnome.shell.extensions.memento-mori.gschema.xml:10
+msgid "\"${w} weeks remaining\""
+msgstr "\"Nog ${w} weken te gaan\""
+
+#: src/extension.ts:46
+msgid "Memento Mori Extension"
+msgstr "Memento Mori-uitbreiding"
+
+#: src/prefs.ts:25
+msgid "Counter"
+msgstr "Teller"
+
+#: src/prefs.ts:30
+msgid "Format string"
+msgstr "Opmaak van tekenreeks"
+
+#: src/prefs.ts:31
+msgid "Hover over the entry to get more info"
+msgstr "Houd de cursor boven een item om meer informatie te tonen"
+
+#: src/prefs.ts:49
+msgid "${w} weeks remaining"
+msgstr "Nog ${w} weken te gaan"
+
+#: src/prefs.ts:51
+msgid ""
+"Available variables for representing\n"
+"total number of <blank> remaining:\n"
+"  - ${y}: Years\n"
+"  - ${M}: Months\n"
+"  - ${w}: Weeks\n"
+"  - ${d}: Days\n"
+"  - ${h}: Hours\n"
+"  - ${m}: Minutes\n"
+"  - ${s}: Seconds"
+msgstr ""
+"Er zijn verschillende opties beschikbaar voor het\n"
+"tonen van het totaal aantal resterende <blanco>:\n"
+"  - ${y}: jaar\n"
+"  - ${M}: maanden\n"
+"  - ${w}: weken\n"
+"  - ${d}: dagen\n"
+"  - ${h}: uur\n"
+"  - ${m}: minuten\n"
+"  - ${s}: seconden"
+
+#: src/prefs.ts:68
+msgid "Birthday"
+msgstr "Verjaardag"
+
+#: src/prefs.ts:69
+msgid "Your birthday in the form YYYY/MM/DD"
+msgstr "Uw verjaardag (JJJJ/MM/DD)"
+
+#: src/prefs.ts:120
+msgid "Life expectancy"
+msgstr "Levensverwachting"
+
+#: src/prefs.ts:121
+msgid "Life expectancy at birth in years"
+msgstr "Levensverwachting sinds geboorte"
+
+#: src/prefs.ts:146
+msgid "Appearance"
+msgstr "Vormgeving"
+
+#: src/prefs.ts:151
+msgid "Left"
+msgstr "Links"
+
+#: src/prefs.ts:152
+msgid "Center"
+msgstr "Midden"
+
+#: src/prefs.ts:153
+msgid "Right"
+msgstr "Rechts"
+
+#: src/prefs.ts:156
+msgid "Extension position"
+msgstr "Uitbreidingslocatie"
+
+#: src/prefs.ts:157
+msgid "Position of the extension in the panel"
+msgstr "De positie van de uitbreiding op de bovenbalk"
+
+#: src/prefs.ts:171
+msgid "Extension index"
+msgstr "Uitbreidingsindex"
+
+#: src/prefs.ts:172
+msgid "Index of the extension in the panel"
+msgstr "De index van de uitbreiding op de bovenbalk"
