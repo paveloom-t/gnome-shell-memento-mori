@@ -12,6 +12,12 @@ This extension adds a counter to the panel which counts down the time you have l
 
 #### Build
 
+Make sure you have the correct version of Node installed. Here's an example using [`fnm`](https://github.com/Schniz/fnm):
+
+```
+fnm use
+```
+
 Make sure you have [Bun](https://bun.sh) installed. Then, run
 
 ```bash
