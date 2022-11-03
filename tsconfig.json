@@ -15,7 +15,7 @@
     },
     "include": [
         ".eslintrc.cjs",
-        "rollup.config.js",
+        "rollup.config.ts",
         "scripts/**/*.ts",
         "src/**/*.ts"
     ],
