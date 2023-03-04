@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
-"X-Generator: fill-pot-po/2.1.10\n"
+"X-Generator: fill-pot-po/2.1.13\n"
 
 #: ./resources/schemas/org.gnome.shell.extensions.memento-mori.gschema.xml:10
 msgid "\"${w} weeks remaining\""

@@ -12,27 +12,20 @@ This extension adds a counter to the panel which counts down the time you have l
 
 #### Build
 
-Make sure you have the correct version of Node installed. Here's an example using [`fnm`](https://github.com/Schniz/fnm):
-
-```
-fnm use
-```
-
-Make sure you have [Bun](https://bun.sh) installed. Then, run
+Make sure you have [Nix](https://nixos.org) installed. Then, run
 
 ```bash
-bun install
-bun run build
-ln -s "$PWD/dist" "$HOME/.local/share/gnome-shell/extensions/memento-mori@paveloom"
+nix build
+ln -s "$PWD/result" "$HOME/.local/share/gnome-shell/extensions/memento-mori@paveloom"
 ```
 
-To archive the result after the build, run `bun run build:package` instead of `bun run build`.
+To get an archive, run `nix build .#zip` instead.
 
 #### Develop
 
-You can lint the code with `bun run lint`.
+You can lint the code with `npm run lint`.
 
-You can run `bun run watch` to keep the bundle updated with changes.
+You can run `npm run watch` to keep the bundle updated with changes.
 
 On Wayland, test the extension by running
 

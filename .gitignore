@@ -1,9 +1,11 @@
-# Bun
+# Direnv
+.direnv
+
+# Nix
+result
+
+# npm
 node_modules
 
 # Rollup
 dist
-
-# GJS bindings
-@gi-types
-docs-lock.json
