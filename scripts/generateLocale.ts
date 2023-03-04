@@ -6,7 +6,7 @@
 import * as fillPotPo from "fill-pot-po";
 import fs from "fs";
 import gettextParser from "gettext-parser";
-import glob from "glob";
+import { globSync } from "glob";
 import path from "path";
 import type { Element } from "gettext-extractor/dist/html/parser";
 import { ElementSelectorSet } from "gettext-extractor/dist/html/selector";
@@ -100,7 +100,7 @@ function compileStrings() {
     // Make sure the output directory exists
     fs.mkdirSync(LOCALE_DIR, { recursive: true });
     // Create a glob for `.po` files
-    const poFiles = glob.sync(`${PO_DIR}/*.po`);
+    const poFiles = globSync(`${PO_DIR}/*.po`);
     // For each `.po` file
     poFiles.forEach((po) => {
         // Get the name of the file

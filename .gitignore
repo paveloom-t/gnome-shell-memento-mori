@@ -3,6 +3,7 @@
 
 # Nix
 result
+*.zip
 
 # npm
 node_modules

@@ -23,7 +23,7 @@
 
       src = ./.;
 
-      npmDepsHash = "sha256-s5rySdDlgKqn/qFwwsJzNcyqfT2HDU5BysJV9zefhXQ=";
+      npmDepsHash = "sha256-WuLDjfe5TLd1QsEdPjVbBQDuFUT6N7hK3BV+XGNCEb4=";
 
       nativeBuildInputs = with pkgs; [
         glib
