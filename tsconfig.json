@@ -5,12 +5,12 @@
         "module": "es2022",
         "moduleResolution": "Node",
         "noPropertyAccessFromIndexSignature": false,
-        "baseUrl": "./src/",
+        "baseUrl": "./src/"
     },
     "ts-node": {
         "files": true,
         "compilerOptions": {
-          "module": "CommonJS"
+            "module": "CommonJS"
         }
     },
     "include": [
@@ -18,5 +18,5 @@
         "rollup.config.ts",
         "scripts/**/*.ts",
         "src/**/*.ts"
-    ],
+    ]
 }

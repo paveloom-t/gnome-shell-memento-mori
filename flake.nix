@@ -8,22 +8,7 @@
     flake-utils,
   }:
     flake-utils.lib.eachDefaultSystem (system: let
-      overlays = [
-        (self: super: {
-          nodejs = super.nodejs-19_x;
-        })
-      ];
-
-      pkgs = import nixpkgs {inherit system overlays;};
-
-      metadata = pkgs.lib.importJSON ./package.json;
-
-      pname = metadata.name;
-      version = metadata.version;
-
-      src = ./.;
-
-      npmDepsHash = "sha256-WuLDjfe5TLd1QsEdPjVbBQDuFUT6N7hK3BV+XGNCEb4=";
+      pkgs = import nixpkgs {inherit system;};
 
       nativeBuildInputs = with pkgs; [
         glib
@@ -32,24 +17,48 @@
       ];
     in {
       devShells.default = pkgs.mkShell {
-        inherit nativeBuildInputs;
+        name = "gnome-shell-memento-mori-shell";
+
+        nativeBuildInputs =
+          nativeBuildInputs
+          ++ (with pkgs; [
+            alejandra
+            ltex-ls
+            nil
+            nodePackages.npm-check-updates
+            nodePackages.typescript-language-server
+            vscode-langservers-extracted
+          ]);
       };
-      packages.default = pkgs.buildNpmPackage {
-        inherit pname version src npmDepsHash nativeBuildInputs;
 
-        installPhase = ''
-          mkdir $out
-          cp -r dist/* $out
-        '';
-      };
-      packages.zip = pkgs.buildNpmPackage {
-        inherit src npmDepsHash nativeBuildInputs;
+      packages = let
+        metadata = pkgs.lib.importJSON ./package.json;
 
-        name = "${pname}-${version}.zip";
+        pname = metadata.name;
+        version = metadata.version;
 
-        installPhase = ''
-          cd dist && zip -qr $out .
-        '';
+        src = ./.;
+
+        npmDepsHash = "sha256-WuLDjfe5TLd1QsEdPjVbBQDuFUT6N7hK3BV+XGNCEb4=";
+      in {
+        default = pkgs.buildNpmPackage {
+          inherit pname version src npmDepsHash nativeBuildInputs;
+
+          installPhase = ''
+            mkdir $out
+            cp -r dist/* $out
+          '';
+        };
+
+        zip = pkgs.buildNpmPackage {
+          inherit src npmDepsHash nativeBuildInputs;
+
+          name = "${pname}-${version}.zip";
+
+          installPhase = ''
+            cd dist && zip -qr $out .
+          '';
+        };
       };
     });
 }
