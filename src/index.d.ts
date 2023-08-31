@@ -1,33 +1,13 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+declare module "resource://*";
 
-import("@gi-types/glib2").Mainloop;
+// Use the older declaration files for not-yet-available libraries
 
-declare const imports: {
-    mainloop: Mainloop;
-    misc: {
-        extensionUtils: {
-            initTranslations: (domain: string) => void;
-            getCurrentExtension: () => any;
-            openPrefs: () => void;
-            getSettings: () => any;
-            gettext: (arg: string) => string;
-        };
-        config: any;
-    };
-    ui: {
-        main: {
-            notify: (arg: string) => void;
-            panel: {
-                addToStatusArea: (
-                    role,
-                    indicator,
-                    position: number,
-                    box: "left" | "center" | "right",
-                ) => indicator;
-            };
-        };
-        panelMenu: any;
-    };
-};
+declare module "gi://Clutter?version=13" {
+    import Clutter from "gi://Clutter?version=12";
+    export default Clutter;
+}
 
-declare module "fill-pot-po";
+declare module "gi://St?version=13" {
+    import St from "gi://St?version=12";
+    export default St;
+}

@@ -1,22 +1,20 @@
 {
-    "extends": "@tsconfig/strictest/tsconfig.json",
+    "extends": [
+        "./tsconfig.alias.json",
+        "@tsconfig/strictest/tsconfig.json"
+    ],
     "compilerOptions": {
-        "target": "es2022",
-        "module": "es2022",
-        "moduleResolution": "Node",
+        "lib": [
+            "ESNext"
+        ],
+        "allowJs": true,
+        "checkJs": true,
+        "module": "ESNext",
         "noPropertyAccessFromIndexSignature": false,
-        "baseUrl": "./src/"
-    },
-    "ts-node": {
-        "files": true,
-        "compilerOptions": {
-            "module": "CommonJS"
-        }
+        "target": "ESNext",
+        "types": []
     },
     "include": [
-        ".eslintrc.cjs",
-        "rollup.config.ts",
-        "scripts/**/*.ts",
         "src/**/*.ts"
     ]
 }

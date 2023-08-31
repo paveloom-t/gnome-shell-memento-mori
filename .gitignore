@@ -1,12 +1,16 @@
 # Direnv
 .direnv
 
-# Nix
-result
-*.zip
-
 # npm
 node_modules
 
-# Rollup
-dist
+# JavaScript
+src/**/*.js
+
+# TypeScript
+tsconfig.alias.json
+types
+
+# Result
+*.zip
+memento-mori@paveloom

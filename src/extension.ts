@@ -1,270 +1,170 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 
-import GLib from "@gi-types/glib2";
-import GObject from "@gi-types/gobject2";
-import type Gio from "@gi-types/gio2";
-import { ActorAlign } from "@gi-types/clutter10";
-import { Label } from "@gi-types/st1";
+import Clutter from "gi://Clutter?version=13";
+import GLib from "gi://GLib?version=2.0";
+import GObject from "gi://GObject?version=2.0";
+import Gio from "gi://Gio?version=2.0";
+import St from "gi://St?version=13";
+
+import * as Main from "resource:///org/gnome/shell/ui/main.js";
+import { Button } from "resource:///org/gnome/shell/ui/panelMenu.js";
 import {
-    add,
-    differenceInDays,
-    differenceInHours,
-    differenceInMinutes,
-    differenceInMonths,
-    differenceInSeconds,
-    differenceInWeeks,
-    differenceInYears,
-} from "date-fns";
+    Extension,
+    gettext as _,
+} from "resource:///org/gnome/shell/extensions/extension.js";
 
-import { unpackSettings, SettingsValues } from "utils";
+class MementoMoriIndicator extends Button {
+    #settings: Gio.Settings;
+    #label: St.Label;
 
-const Main = imports.ui.main;
-const Mainloop = imports.mainloop;
-const { Button } = imports.ui.panelMenu;
-const { getSettings, initTranslations } = imports.misc.extensionUtils;
-const _ = imports.misc.extensionUtils.gettext;
-
-// Indicator
-const Indicator = GObject.registerClass(
-    class Indicator extends Button {
-        // Settings
-        #settings: Gio.Settings;
-        // The date of passing away
-        #end: Date;
-        // Label
-        #label: Label;
-        // Construct the indicator
-        constructor() {
-            // Initialize the button
-            super(
-                // Menu alignment
-                0,
-                // Name of the button
-                _("Memento Mori Extension"),
-                // Don't create the menu?
-                true,
-            );
-            // Obtain and unpack the settings
-            this.#settings = getSettings();
-            const settingsValues = unpackSettings(this.#settings);
-            // Save the end date
-            this.#end = Indicator.getEndDate(settingsValues);
-            // Add the label
-            this.#label = new Label({
-                text: Indicator.getText(settingsValues, this.#end),
-                yAlign: ActorAlign.CENTER,
-            });
-            this.add_child(this.#label);
-        }
-        // Update the indicator
-        update() {
-            // Unpack the settings
-            const settingsValues = unpackSettings(this.#settings);
-            // Update the fields
-            this.#end = Indicator.getEndDate(settingsValues);
-            this.#label.text = Indicator.getText(settingsValues, this.#end);
-        }
-        // Get the text for the label
-        static getText(settingsValues: SettingsValues, end: Date): string {
-            // Get the current date
-            const start = new Date();
-            // Get each part of the time stamp
-            const years = Math.max(0, differenceInYears(end, start));
-            const months = Math.max(0, differenceInMonths(end, start));
-            const weeks = Math.max(0, differenceInWeeks(end, start));
-            const days = Math.max(0, differenceInDays(end, start));
-            const hours = Math.max(0, differenceInHours(end, start));
-            const minutes = Math.max(0, differenceInMinutes(end, start));
-            const seconds = Math.max(0, differenceInSeconds(end, start));
-            // Return the formatted string
-            return settingsValues.formatString
-                .replace("${y}", `${years}`)
-                .replace("${M}", `${months}`)
-                .replace("${w}", `${weeks}`)
-                .replace("${d}", `${days}`)
-                .replace("${h}", `${hours}`)
-                .replace("${m}", `${minutes}`)
-                .replace("${s}", `${seconds}`);
-        }
-        // Get the date of expected passing away
-        static getEndDate(settingsValues: SettingsValues): Date {
-            // Construct and return the date
-            return add(
-                new Date(
-                    settingsValues.birthYear,
-                    settingsValues.birthMonth - 1,
-                    settingsValues.birthDay,
-                ),
-                {
-                    years: settingsValues.lifeExpectancy,
-                },
-            );
-        }
-    },
-);
-
-// Extension
-class Extension {
-    // UUID of the extension
-    readonly #uuid: string;
-    // Settings
-    #settings: Gio.Settings | null = null;
-    // Signals
-    #signals: number[] = [];
-    // Extension position
-    #extensionPosition: "left" | "center" | "right" | null = null;
-    // Extension index
-    #extensionIndex: number | null = null;
-    // Indicator
-    #indicator: any;
-    // Timeout source
-    #timeout: number | null = null;
-    // Construct the extension
-    constructor(uuid: string) {
-        this.#uuid = uuid;
-    }
-    // Enable the extension
-    enable() {
-        // Try to obtain the settings
-        this.#settings = getSettings();
-        // If that's successful
-        if (this.#settings) {
-            // Get the extensions position
-            this.#extensionPosition = Extension.getExtensionPosition(
-                this.#settings,
-            );
-            // Get the extension index
-            this.#extensionIndex = this.#settings.get_int("extension-index");
-            // Add the indicator
-            this.addIndicator();
-            // Update the indicator on any change to counter settings
-            for (const key of [
-                "format-string",
-                "birth-year",
-                "birth-month",
-                "birth-day",
-                "life-expectancy",
-            ]) {
-                const handlerId = this.#settings.connect(
-                    `changed::${key}`,
-                    () => {
-                        this.#indicator.update();
-                    },
-                );
-                this.#signals.push(handlerId);
-            }
-            // Recreate the indicator in case the extension position is changed
+    static {
+        GObject.registerClass(
             {
-                const handlerId = this.#settings.connect(
-                    "changed::extension-position",
-                    () => {
-                        if (this.#settings) {
-                            this.#extensionPosition =
-                                Extension.getExtensionPosition(this.#settings);
-                            this.removeIndicator();
-                            this.addIndicator();
-                        }
-                    },
-                );
-                this.#signals.push(handlerId);
-            }
-            // Recreate the indicator in case the extension index is changed
-            {
-                const handlerId = this.#settings.connect(
-                    "changed::extension-index",
-                    () => {
-                        if (this.#settings) {
-                            this.#extensionIndex =
-                                this.#settings.get_int("extension-index");
-                            this.removeIndicator();
-                            this.addIndicator();
-                        }
-                    },
-                );
-                this.#signals.push(handlerId);
-            }
-        }
+                GTypeName: "MementoMoriIndicator",
+            },
+            this,
+        );
     }
-    // Add the indicator to the panel
-    addIndicator() {
-        // Initialize a new indicator
-        this.#indicator = new Indicator();
-        // If the extension index and extension position are defined
-        if (this.#extensionIndex != null && this.#extensionPosition) {
-            // Add the indicator to the panel
-            Main.panel.addToStatusArea(
-                // Role
-                this.#uuid,
-                // Indicator
-                this.#indicator,
-                // Index
-                this.#extensionIndex,
-                // Position
-                this.#extensionPosition,
-            );
-        }
-        // Update the indicator every second
-        this.#timeout = Mainloop.timeout_add_seconds(1, () => {
-            // Update the indicator
-            this.#indicator.update();
-            // Leave the source in the main loop
-            return GLib.SOURCE_CONTINUE;
-        });
+
+    constructor(settings: Gio.Settings) {
+        super(
+            // Menu alignment
+            0,
+            // Name of the button
+            _("Memento Mori Extension"),
+            // Don't create the menu?
+            true,
+        );
+
+        this.#settings = settings;
+
+        this.#label = St.Label.new(this.getText());
+        this.#label.get_clutter_text().set_y_align(Clutter.ActorAlign.CENTER);
+
+        this.add_child(this.#label);
     }
-    // Remove the indicator from the panel
-    removeIndicator() {
-        // If the timeout is set
-        if (this.#timeout) {
-            // Remove the timeout
-            Mainloop.source_remove(this.#timeout);
-            this.#timeout = null;
-        }
-        // If the indicator exists
-        if (this.#indicator) {
-            // Free the GObject
-            this.#indicator.destroy();
-            // Stop tracing it
-            this.#indicator = null;
-        }
+
+    update() {
+        this.#label.text = this.getText();
     }
-    // Disable the extension
-    disable() {
-        // Reset the default values of some fields
-        this.#extensionPosition = null;
-        this.#extensionIndex = null;
-        // If there are connected signals, disconnect them
-        if (this.#settings) {
-            for (const handlerId of this.#signals) {
-                this.#settings.disconnect(handlerId);
-            }
-            this.#settings = null;
-        }
-        this.#signals = [];
-        // Remove the indicator
-        this.removeIndicator();
+
+    private getText(): string {
+        const nowDate = GLib.DateTime.new_now_local();
+        const passingAwayDate = this.getPassingAwayDate();
+
+        const microseconds = passingAwayDate.difference(nowDate);
+
+        const seconds = Math.floor(microseconds / 1e6);
+        const minutes = Math.floor(seconds / 60);
+        const hours = Math.floor(minutes / 60);
+        const days = Math.floor(hours / 24);
+        const weeks = Math.floor(days / 7);
+        const months = Math.floor(days / 30.436875);
+        const years = Math.floor(days / 365.2425);
+
+        const formatString = this.#settings.get_string("format-string")!;
+
+        return formatString
+            .replace("${s}", `${seconds}`)
+            .replace("${m}", `${minutes}`)
+            .replace("${h}", `${hours}`)
+            .replace("${d}", `${days}`)
+            .replace("${w}", `${weeks}`)
+            .replace("${M}", `${months}`)
+            .replace("${y}", `${years}`);
     }
-    // Get the extension position from the settings
-    static getExtensionPosition(settings: Gio.Settings) {
-        switch (settings.get_enum("extension-position")) {
-            case 0:
-                return "left";
-            case 1:
-                return "center";
-            case 2:
-                return "right";
-            default:
-                return "right";
-        }
+
+    private getPassingAwayDate(): GLib.DateTime {
+        const birthdayDate = GLib.DateTime.new_local(
+            this.#settings.get_int("birth-year"),
+            this.#settings.get_int("birth-month"),
+            this.#settings.get_int("birth-day"),
+            0,
+            0,
+            0,
+        );
+        return birthdayDate.add_years(
+            this.#settings.get_int("life-expectancy"),
+        )!;
     }
 }
 
-// Initialize the extension
-export default function init(meta: { uuid: string }): Extension {
-    // Initialize translations
-    initTranslations(meta.uuid);
-    // Construct and return the extension
-    return new Extension(meta.uuid);
+export default class MementoMoriExtension extends Extension {
+    #settings: Gio.Settings | null = null;
+    #indicator: MementoMoriIndicator | null = null;
+    #signalHandler: number | null = null;
+    #timeout: number | null = null;
+
+    enable() {
+        this.#settings = this.getSettings();
+
+        if (this.#settings === null) {
+            return;
+        }
+
+        this.addIndicator();
+
+        this.#signalHandler = this.#settings.connect("changed", (_, key) => {
+            switch (key) {
+                case "format-string":
+                case "birth-year":
+                case "birth-month":
+                case "birth-day":
+                case "life-expectancy":
+                    this.#indicator?.update();
+                    break;
+                case "extension-position":
+                case "extension-index":
+                    this.removeIndicator();
+                    this.addIndicator();
+                    break;
+            }
+        });
+    }
+
+    private addIndicator() {
+        if (this.#settings === null) {
+            return;
+        }
+
+        this.#indicator = new MementoMoriIndicator(this.#settings);
+
+        Main.panel.addToStatusArea(
+            // Role
+            this.uuid,
+            this.#indicator,
+            this.#settings.get_int("extension-index"),
+            this.#settings.get_string("extension-position"),
+        );
+
+        this.#timeout = GLib.timeout_add_seconds(
+            GLib.PRIORITY_DEFAULT,
+            1,
+            () => {
+                this.#indicator?.update();
+                return GLib.SOURCE_CONTINUE;
+            },
+        );
+    }
+
+    private removeIndicator() {
+        if (this.#timeout !== null) {
+            GLib.source_remove(this.#timeout);
+        }
+        this.#timeout = null;
+        this.#indicator?.destroy();
+        this.#indicator = null;
+    }
+
+    disable() {
+        if (this.#settings !== null && this.#signalHandler !== null) {
+            this.#settings.disconnect(this.#signalHandler);
+        }
+        this.#signalHandler = null;
+        this.#settings = null;
+        this.removeIndicator();
+    }
 }

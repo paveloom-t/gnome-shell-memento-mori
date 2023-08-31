@@ -9,55 +9,36 @@
   }:
     flake-utils.lib.eachDefaultSystem (system: let
       pkgs = import nixpkgs {inherit system;};
-
-      nativeBuildInputs = with pkgs; [
-        glib
-        nodejs
-        zip
-      ];
     in {
       devShells.default = pkgs.mkShell {
         name = "gnome-shell-memento-mori-shell";
 
-        nativeBuildInputs =
-          nativeBuildInputs
-          ++ (with pkgs; [
-            alejandra
-            ltex-ls
-            nil
-            nodePackages.npm-check-updates
-            nodePackages.typescript-language-server
-            vscode-langservers-extracted
+        nativeBuildInputs = with pkgs; [
+          alejandra
+          bashInteractive
+          gettext
+          gnome.gnome-shell
+          gobject-introspection
+          libxml2
+          ltex-ls
+          nil
+          nodePackages.npm-check-updates
+          nodePackages.typescript-language-server
+          nodejs
+          shellcheck
+          vscode-langservers-extracted
+          yamlfmt
+          yamllint
+        ];
+
+        env = {
+          GIR_DIRECTORIES = nixpkgs.lib.concatStringsSep " " (with pkgs; [
+            "${gnome.mutter}/lib/mutter-12"
+            "${gnome.gnome-shell}/share/gnome-shell"
+            "${gobject-introspection.dev}/share/gir-1.0"
+            "${gtk4.dev}/share/gir-1.0"
+            "${libadwaita.dev}/share/gir-1.0"
           ]);
-      };
-
-      packages = let
-        metadata = pkgs.lib.importJSON ./package.json;
-
-        pname = metadata.name;
-        version = metadata.version;
-
-        src = ./.;
-
-        npmDepsHash = "sha256-WuLDjfe5TLd1QsEdPjVbBQDuFUT6N7hK3BV+XGNCEb4=";
-      in {
-        default = pkgs.buildNpmPackage {
-          inherit pname version src npmDepsHash nativeBuildInputs;
-
-          installPhase = ''
-            mkdir $out
-            cp -r dist/* $out
-          '';
-        };
-
-        zip = pkgs.buildNpmPackage {
-          inherit src npmDepsHash nativeBuildInputs;
-
-          name = "${pname}-${version}.zip";
-
-          installPhase = ''
-            cd dist && zip -qr $out .
-          '';
         };
       };
     });

@@ -1,33 +1,24 @@
-msgid ""
-msgstr ""
-"Content-Type: text/plain; charset=utf-8\n"
-"X-Generator: fill-pot-po/2.2.4\n"
-
-#: ./resources/schemas/org.gnome.shell.extensions.memento-mori.gschema.xml:10
-msgid "\"${w} weeks remaining\""
-msgstr "\"Nog ${w} weken te gaan\""
-
-#: src/extension.ts:46
+#: src/extension.ts:37
 msgid "Memento Mori Extension"
 msgstr "Memento Mori-uitbreiding"
 
-#: src/prefs.ts:25
+#: src/prefs.ts:35
 msgid "Counter"
 msgstr "Teller"
 
-#: src/prefs.ts:30
+#: src/prefs.ts:40
 msgid "Format string"
 msgstr "Opmaak van tekenreeks"
 
-#: src/prefs.ts:31
+#: src/prefs.ts:41
 msgid "Hover over the entry to get more info"
 msgstr "Houd de cursor boven een item om meer informatie te tonen"
 
-#: src/prefs.ts:49
+#: src/prefs.ts:58
 msgid "${w} weeks remaining"
 msgstr "Nog ${w} weken te gaan"
 
-#: src/prefs.ts:51
+#: src/prefs.ts:60
 msgid ""
 "Available variables for representing\n"
 "total number of <blank> remaining:\n"
@@ -49,50 +40,54 @@ msgstr ""
 "  - ${m}: minuten\n"
 "  - ${s}: seconden"
 
-#: src/prefs.ts:68
+#: src/prefs.ts:75
 msgid "Birthday"
 msgstr "Verjaardag"
 
-#: src/prefs.ts:69
+#: src/prefs.ts:76
 msgid "Your birthday in the form YYYY/MM/DD"
 msgstr "Uw verjaardag (JJJJ/MM/DD)"
 
-#: src/prefs.ts:120
+#: src/prefs.ts:122
 msgid "Life expectancy"
 msgstr "Levensverwachting"
 
-#: src/prefs.ts:121
+#: src/prefs.ts:123
 msgid "Life expectancy at birth in years"
 msgstr "Levensverwachting sinds geboorte"
 
-#: src/prefs.ts:146
+#: src/prefs.ts:150
 msgid "Appearance"
 msgstr "Vormgeving"
 
-#: src/prefs.ts:151
+#: src/prefs.ts:155
 msgid "Left"
 msgstr "Links"
 
-#: src/prefs.ts:152
+#: src/prefs.ts:156
 msgid "Center"
 msgstr "Midden"
 
-#: src/prefs.ts:153
+#: src/prefs.ts:157
 msgid "Right"
 msgstr "Rechts"
 
-#: src/prefs.ts:156
+#: src/prefs.ts:160
 msgid "Extension position"
 msgstr "Uitbreidingslocatie"
 
-#: src/prefs.ts:157
+#: src/prefs.ts:161
 msgid "Position of the extension in the panel"
 msgstr "De positie van de uitbreiding op de bovenbalk"
 
-#: src/prefs.ts:171
+#: src/prefs.ts:174
 msgid "Extension index"
 msgstr "Uitbreidingsindex"
 
-#: src/prefs.ts:172
+#: src/prefs.ts:175
 msgid "Index of the extension in the panel"
 msgstr "De index van de uitbreiding op de bovenbalk"
+
+#: resources/schemas/org.gnome.shell.extensions.memento-mori.gschema.xml:10
+msgid "\"${w} weeks remaining\""
+msgstr "\"Nog ${w} weken te gaan\""

@@ -1,33 +1,24 @@
-msgid ""
-msgstr ""
-"Content-Type: text/plain; charset=utf-8\n"
-"X-Generator: fill-pot-po/2.2.4\n"
-
-#: ./resources/schemas/org.gnome.shell.extensions.memento-mori.gschema.xml:10
-msgid "\"${w} weeks remaining\""
-msgstr "\"${w} weeks remaining\""
-
-#: src/extension.ts:46
+#: src/extension.ts:37
 msgid "Memento Mori Extension"
 msgstr "Memento Mori Extension"
 
-#: src/prefs.ts:25
+#: src/prefs.ts:35
 msgid "Counter"
 msgstr "Counter"
 
-#: src/prefs.ts:30
+#: src/prefs.ts:40
 msgid "Format string"
 msgstr "Format string"
 
-#: src/prefs.ts:31
+#: src/prefs.ts:41
 msgid "Hover over the entry to get more info"
 msgstr "Hover over the entry to get more info"
 
-#: src/prefs.ts:49
+#: src/prefs.ts:58
 msgid "${w} weeks remaining"
 msgstr "${w} weeks remaining"
 
-#: src/prefs.ts:51
+#: src/prefs.ts:60
 msgid ""
 "Available variables for representing\n"
 "total number of <blank> remaining:\n"
@@ -49,50 +40,54 @@ msgstr ""
 "  - ${m}: Minutes\n"
 "  - ${s}: Seconds"
 
-#: src/prefs.ts:68
+#: src/prefs.ts:75
 msgid "Birthday"
 msgstr "Birthday"
 
-#: src/prefs.ts:69
+#: src/prefs.ts:76
 msgid "Your birthday in the form YYYY/MM/DD"
 msgstr "Your birthday in the form YYYY/MM/DD"
 
-#: src/prefs.ts:120
+#: src/prefs.ts:122
 msgid "Life expectancy"
 msgstr "Life expectancy"
 
-#: src/prefs.ts:121
+#: src/prefs.ts:123
 msgid "Life expectancy at birth in years"
 msgstr "Life expectancy at birth in years"
 
-#: src/prefs.ts:146
+#: src/prefs.ts:150
 msgid "Appearance"
 msgstr "Appearance"
 
-#: src/prefs.ts:151
+#: src/prefs.ts:155
 msgid "Left"
 msgstr "Left"
 
-#: src/prefs.ts:152
+#: src/prefs.ts:156
 msgid "Center"
 msgstr "Center"
 
-#: src/prefs.ts:153
+#: src/prefs.ts:157
 msgid "Right"
 msgstr "Right"
 
-#: src/prefs.ts:156
+#: src/prefs.ts:160
 msgid "Extension position"
 msgstr "Extension position"
 
-#: src/prefs.ts:157
+#: src/prefs.ts:161
 msgid "Position of the extension in the panel"
 msgstr "Position of the extension in the panel"
 
-#: src/prefs.ts:171
+#: src/prefs.ts:174
 msgid "Extension index"
 msgstr "Extension index"
 
-#: src/prefs.ts:172
+#: src/prefs.ts:175
 msgid "Index of the extension in the panel"
 msgstr "Index of the extension in the panel"
+
+#: resources/schemas/org.gnome.shell.extensions.memento-mori.gschema.xml:10
+msgid "\"${w} weeks remaining\""
+msgstr "\"${w} weeks remaining\""

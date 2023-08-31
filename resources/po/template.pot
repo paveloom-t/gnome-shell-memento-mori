@@ -1,22 +1,22 @@
 #: src/extension.ts:37
 msgid "Memento Mori Extension"
-msgstr "Estensione Memento Mori"
+msgstr ""
 
 #: src/prefs.ts:35
 msgid "Counter"
-msgstr "Contatore"
+msgstr ""
 
 #: src/prefs.ts:40
 msgid "Format string"
-msgstr "Formato della stringa"
+msgstr ""
 
 #: src/prefs.ts:41
 msgid "Hover over the entry to get more info"
-msgstr "Passa il mouse sopra la voce per ottenere maggiori informazioni"
+msgstr ""
 
 #: src/prefs.ts:58
 msgid "${w} weeks remaining"
-msgstr "${w} settimane rimanenti"
+msgstr ""
 
 #: src/prefs.ts:60
 msgid ""
@@ -30,64 +30,55 @@ msgid ""
 "  - ${m}: Minutes\n"
 "  - ${s}: Seconds"
 msgstr ""
-"Variabili disponibili per rappresentare\n"
-"il numero di <blank> rimanenti:\n"
-"  - ${y}: Anni\n"
-"  - ${M}: Mesi\n"
-"  - ${w}: Settimane\n"
-"  - ${d}: Giorni\n"
-"  - ${h}: Ore\n"
-"  - ${m}: Minuti\n"
-"  - ${s}: Secondi"
 
 #: src/prefs.ts:75
 msgid "Birthday"
-msgstr "Compleanno"
+msgstr ""
 
 #: src/prefs.ts:76
 msgid "Your birthday in the form YYYY/MM/DD"
-msgstr "Il vostro compleanno nel formato YYYY/MM/DD"
+msgstr ""
 
 #: src/prefs.ts:122
 msgid "Life expectancy"
-msgstr "Speranza di vita"
+msgstr ""
 
 #: src/prefs.ts:123
 msgid "Life expectancy at birth in years"
-msgstr "Speranza di vita alla nascita in anni"
+msgstr ""
 
 #: src/prefs.ts:150
 msgid "Appearance"
-msgstr "Apparenza"
+msgstr ""
 
 #: src/prefs.ts:155
 msgid "Left"
-msgstr "Sinistra"
+msgstr ""
 
 #: src/prefs.ts:156
 msgid "Center"
-msgstr "Centro"
+msgstr ""
 
 #: src/prefs.ts:157
 msgid "Right"
-msgstr "Destra"
+msgstr ""
 
 #: src/prefs.ts:160
 msgid "Extension position"
-msgstr "Posizione dell’estensione"
+msgstr ""
 
 #: src/prefs.ts:161
 msgid "Position of the extension in the panel"
-msgstr "Posizione dell’estensione nella barra superiore"
+msgstr ""
 
 #: src/prefs.ts:174
 msgid "Extension index"
-msgstr "Indice dell’estensione"
+msgstr ""
 
 #: src/prefs.ts:175
 msgid "Index of the extension in the panel"
-msgstr "Indice dell’estensione nella barra superiore"
+msgstr ""
 
 #: resources/schemas/org.gnome.shell.extensions.memento-mori.gschema.xml:10
 msgid "\"${w} weeks remaining\""
-msgstr "\"${w} settimane rimanenti\""
+msgstr ""

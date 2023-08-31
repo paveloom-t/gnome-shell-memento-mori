@@ -12,31 +12,32 @@ This extension adds a counter to the panel which counts down the time you have l
 
 #### Build
 
-Make sure you have [Nix](https://nixos.org) installed. Then, run
+Make sure you have installed the following:
+
+- [Nix](https://nixos.org)
+- [`direnv`](https://github.com/direnv/direnv)
+- [`nix-direnv`](https://github.com/nix-community/nix-direnv)
+
+Allow `direnv` to load the environment by executing `direnv allow`.
+
+Then, create an extension bundle by running
 
 ```bash
-nix build
-ln -s "$PWD/result" "$HOME/.local/share/gnome-shell/extensions/memento-mori@paveloom"
+./scripts/build.bash
 ```
 
-To get an archive, run `nix build .#zip` instead.
-
-#### Develop
-
-You can lint the code with `npm run lint`.
-
-You can run `npm run watch` to keep the bundle updated with changes.
-
-On Wayland, test the extension by running
+This will create the `memento-mori@paveloom.zip` file. You can install the bundle by running
 
 ```bash
-env MUTTER_DEBUG_DUMMY_MODE_SPECS=1280x720 \
-  dbus-run-session -- gnome-shell --nested --wayland
+gnome-extensions install --force memento-mori@paveloom.zip
 ```
+
+See also:
+- [Debugging](https://gjs.guide/extensions/development/debugging.html)
 
 #### Translations
 
-To add a translation, contribute a `.po` file. See [`resources/po`](resources/po) for examples.
+To add a translation, contribute a `.po` file. See [`resources/po`](resources/po) for examples:
 
 - [Dutch](resources/po/nl.po)
   - Heimen Stoffels <vistausss@fastmail.com>
