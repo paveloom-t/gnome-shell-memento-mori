@@ -3,10 +3,10 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 
-import Adw from "gi://Adw?version=1";
-import GLib from "gi://GLib?version=2.0";
-import Gio from "gi://Gio?version=2.0";
-import Gtk from "gi://Gtk?version=4.0";
+import Adw from "gi://Adw";
+import GLib from "gi://GLib";
+import Gio from "gi://Gio";
+import Gtk from "gi://Gtk";
 
 function formatBirthdayDate(year: number, month: number, day: number): string {
     const monthString = month < 10 ? `0${month}` : `${month}`;

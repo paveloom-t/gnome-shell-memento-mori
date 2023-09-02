@@ -3,11 +3,11 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 
-import Clutter from "gi://Clutter?version=13";
-import GLib from "gi://GLib?version=2.0";
-import GObject from "gi://GObject?version=2.0";
-import Gio from "gi://Gio?version=2.0";
-import St from "gi://St?version=13";
+import Clutter from "gi://Clutter";
+import GLib from "gi://GLib";
+import GObject from "gi://GObject";
+import Gio from "gi://Gio";
+import St from "gi://St";
 
 import * as Main from "resource:///org/gnome/shell/ui/main.js";
 import { Button } from "resource:///org/gnome/shell/ui/panelMenu.js";
