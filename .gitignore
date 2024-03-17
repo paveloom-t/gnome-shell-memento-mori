@@ -1,16 +1,11 @@
-# Direnv
 .direnv
+.idea
+.vscode
 
-# npm
 node_modules
-
-# JavaScript
 src/**/*.js
 
-# TypeScript
-tsconfig.alias.json
-types
+types/generated
 
-# Result
 *.zip
 memento-mori@paveloom

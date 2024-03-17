@@ -16,24 +16,20 @@
         nativeBuildInputs = with pkgs; [
           alejandra
           bashInteractive
+          nil
+
           gettext
           gnome.gnome-shell
           gobject-introspection
           libxml2
-          ltex-ls
-          nil
-          nodePackages.npm-check-updates
-          nodePackages.typescript-language-server
-          nodejs
-          shellcheck
-          vscode-langservers-extracted
-          yamlfmt
-          yamllint
+
+          nodejs_latest
+          nodePackages_latest.npm-check-updates
         ];
 
         env = {
           GIR_DIRECTORIES = nixpkgs.lib.concatStringsSep " " (with pkgs; [
-            "${gnome.mutter}/lib/mutter-12"
+            "${gnome.mutter}/lib/mutter-13"
             "${gnome.gnome-shell}/share/gnome-shell"
             "${gobject-introspection.dev}/share/gir-1.0"
             "${gtk4.dev}/share/gir-1.0"

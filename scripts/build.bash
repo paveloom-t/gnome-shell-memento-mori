@@ -9,10 +9,10 @@ UUID="memento-mori@paveloom"
 rm -rf "$UUID.shell-extension.zip" "$UUID.zip"
 
 if [ "$1" == "-t" ]; then
-    rm -rf types
+    rm -rf types/generated
 fi
 
-if [ ! -d types ]; then
+if [ ! -d types/generated ]; then
     echo "Generating declaration files from GIRs..."
 
     # shellcheck disable=2086
@@ -31,7 +31,7 @@ echo "Formatting the transpiled code..."
 
 sed -i '\#^/\*#d' src/*.js
 
-npx eslint --no-eslintrc -c .eslintrc.javascript.cjs src/*.js --fix
+npx eslint src/*.js --fix
 
 echo "Packing the extension..."
 
