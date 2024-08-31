@@ -15,8 +15,7 @@ fi
 if [ ! -d types/generated ]; then
     echo "Generating declaration files from GIRs..."
 
-    # shellcheck disable=2086
-    npx ts-for-gir generate -g $GIR_DIRECTORIES
+    npm run --silent types
 fi
 
 echo "Transpiling TypeScript to JavaScript..."
