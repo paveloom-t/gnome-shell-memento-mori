@@ -60,13 +60,13 @@ class MementoMoriIndicator extends Button {
     const formatString = this.#settings.get_string("format-string")!;
 
     return formatString
-      .replace("${s}", `${seconds}`)
-      .replace("${m}", `${minutes}`)
-      .replace("${h}", `${hours}`)
-      .replace("${d}", `${days}`)
-      .replace("${w}", `${weeks}`)
-      .replace("${M}", `${months}`)
-      .replace("${y}", `${years}`);
+      .replace("${s}", seconds.toFixed())
+      .replace("${m}", minutes.toFixed())
+      .replace("${h}", hours.toFixed())
+      .replace("${d}", days.toFixed())
+      .replace("${w}", weeks.toFixed())
+      .replace("${M}", months.toFixed())
+      .replace("${y}", years.toFixed());
   }
 
   private getPassingAwayDate(): GLib.DateTime {
