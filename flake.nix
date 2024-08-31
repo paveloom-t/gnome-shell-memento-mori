@@ -15,8 +15,16 @@
 
       nativeBuildInputs = with pkgs; [
         alejandra
+        bash-language-server
         bashInteractive
         nil
+        npm-check-updates
+        shellcheck
+        shfmt
+        typescript-language-server
+        vscode-langservers-extracted
+        yamlfmt
+        yamllint
 
         gettext
         gnome.gnome-shell
@@ -24,7 +32,6 @@
         libxml2
 
         nodejs_latest
-        nodePackages_latest.npm-check-updates
       ];
 
       env = {
