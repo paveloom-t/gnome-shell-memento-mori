@@ -46,10 +46,10 @@ To add a translation, contribute a `.po` file. See [`resources/po`](resources/po
 - [Dutch](resources/po/nl.po)
     - Heimen Stoffels <vistausss@fastmail.com>
 - [English](resources/po/en.po)
-    - Pavel Sobolev <paveloom@riseup.net>
+    - Pavel Sobolev <contact@paveloom.dev>
 - [French](resources/po/fr.po)
     - Simon Elst <kirmaha@duck.com>
 - [Italian](resources/po/it_IT.po)
     - Jibus <jibus@tutanota.com>
 - [Russian](resources/po/ru.po)
-    - Pavel Sobolev <paveloom@riseup.net>
+    - Pavel Sobolev <contact@paveloom.dev>
