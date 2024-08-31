@@ -20,6 +20,11 @@ xgettext resources/schemas/org.gnome.shell.extensions.memento-mori.gschema.xml \
     --omit-header \
     --output="$POT"
 
+sed -i \
+    -e '1i msgid ""' \
+    -e '1i msgstr "Content-Type: text/plain; charset=UTF-8"\n' \
+    resources/po/template.pot
+
 for po in resources/po/*.po; do
     msgmerge \
         --backup=none \

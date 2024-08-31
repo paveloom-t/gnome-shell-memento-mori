@@ -1,24 +1,27 @@
-#: src/extension.ts:37
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8\n"
+
+#: src/extension.ts:29
 msgid "Memento Mori Extension"
 msgstr "Memento Mori-uitbreiding"
 
-#: src/prefs.ts:35
+#: src/prefs.ts:27
 msgid "Counter"
 msgstr "Teller"
 
-#: src/prefs.ts:40
+#: src/prefs.ts:32
 msgid "Format string"
 msgstr "Opmaak van tekenreeks"
 
-#: src/prefs.ts:41
+#: src/prefs.ts:33
 msgid "Hover over the entry to get more info"
 msgstr "Houd de cursor boven een item om meer informatie te tonen"
 
-#: src/prefs.ts:58
+#: src/prefs.ts:45
 msgid "${w} weeks remaining"
 msgstr "Nog ${w} weken te gaan"
 
-#: src/prefs.ts:60
+#: src/prefs.ts:47
 msgid ""
 "Available variables for representing\n"
 "total number of <blank> remaining:\n"
@@ -40,51 +43,51 @@ msgstr ""
 "  - ${m}: minuten\n"
 "  - ${s}: seconden"
 
-#: src/prefs.ts:75
+#: src/prefs.ts:62
 msgid "Birthday"
 msgstr "Verjaardag"
 
-#: src/prefs.ts:76
+#: src/prefs.ts:63
 msgid "Your birthday in the form YYYY/MM/DD"
 msgstr "Uw verjaardag (JJJJ/MM/DD)"
 
-#: src/prefs.ts:122
+#: src/prefs.ts:101
 msgid "Life expectancy"
 msgstr "Levensverwachting"
 
-#: src/prefs.ts:123
+#: src/prefs.ts:102
 msgid "Life expectancy at birth in years"
 msgstr "Levensverwachting sinds geboorte"
 
-#: src/prefs.ts:150
+#: src/prefs.ts:122
 msgid "Appearance"
 msgstr "Vormgeving"
 
-#: src/prefs.ts:155
+#: src/prefs.ts:127
 msgid "Left"
 msgstr "Links"
 
-#: src/prefs.ts:156
+#: src/prefs.ts:128
 msgid "Center"
 msgstr "Midden"
 
-#: src/prefs.ts:157
+#: src/prefs.ts:129
 msgid "Right"
 msgstr "Rechts"
 
-#: src/prefs.ts:160
+#: src/prefs.ts:132
 msgid "Extension position"
 msgstr "Uitbreidingslocatie"
 
-#: src/prefs.ts:161
+#: src/prefs.ts:133
 msgid "Position of the extension in the panel"
 msgstr "De positie van de uitbreiding op de bovenbalk"
 
-#: src/prefs.ts:174
+#: src/prefs.ts:143
 msgid "Extension index"
 msgstr "Uitbreidingsindex"
 
-#: src/prefs.ts:175
+#: src/prefs.ts:144
 msgid "Index of the extension in the panel"
 msgstr "De index van de uitbreiding op de bovenbalk"
 

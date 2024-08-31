@@ -1,24 +1,27 @@
-#: src/extension.ts:37
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8\n"
+
+#: src/extension.ts:29
 msgid "Memento Mori Extension"
 msgstr "Estensione Memento Mori"
 
-#: src/prefs.ts:35
+#: src/prefs.ts:27
 msgid "Counter"
 msgstr "Contatore"
 
-#: src/prefs.ts:40
+#: src/prefs.ts:32
 msgid "Format string"
 msgstr "Formato della stringa"
 
-#: src/prefs.ts:41
+#: src/prefs.ts:33
 msgid "Hover over the entry to get more info"
 msgstr "Passa il mouse sopra la voce per ottenere maggiori informazioni"
 
-#: src/prefs.ts:58
+#: src/prefs.ts:45
 msgid "${w} weeks remaining"
 msgstr "${w} settimane rimanenti"
 
-#: src/prefs.ts:60
+#: src/prefs.ts:47
 msgid ""
 "Available variables for representing\n"
 "total number of <blank> remaining:\n"
@@ -40,51 +43,51 @@ msgstr ""
 "  - ${m}: Minuti\n"
 "  - ${s}: Secondi"
 
-#: src/prefs.ts:75
+#: src/prefs.ts:62
 msgid "Birthday"
 msgstr "Compleanno"
 
-#: src/prefs.ts:76
+#: src/prefs.ts:63
 msgid "Your birthday in the form YYYY/MM/DD"
 msgstr "Il vostro compleanno nel formato YYYY/MM/DD"
 
-#: src/prefs.ts:122
+#: src/prefs.ts:101
 msgid "Life expectancy"
 msgstr "Speranza di vita"
 
-#: src/prefs.ts:123
+#: src/prefs.ts:102
 msgid "Life expectancy at birth in years"
 msgstr "Speranza di vita alla nascita in anni"
 
-#: src/prefs.ts:150
+#: src/prefs.ts:122
 msgid "Appearance"
 msgstr "Apparenza"
 
-#: src/prefs.ts:155
+#: src/prefs.ts:127
 msgid "Left"
 msgstr "Sinistra"
 
-#: src/prefs.ts:156
+#: src/prefs.ts:128
 msgid "Center"
 msgstr "Centro"
 
-#: src/prefs.ts:157
+#: src/prefs.ts:129
 msgid "Right"
 msgstr "Destra"
 
-#: src/prefs.ts:160
+#: src/prefs.ts:132
 msgid "Extension position"
 msgstr "Posizione dell’estensione"
 
-#: src/prefs.ts:161
+#: src/prefs.ts:133
 msgid "Position of the extension in the panel"
 msgstr "Posizione dell’estensione nella barra superiore"
 
-#: src/prefs.ts:174
+#: src/prefs.ts:143
 msgid "Extension index"
 msgstr "Indice dell’estensione"
 
-#: src/prefs.ts:175
+#: src/prefs.ts:144
 msgid "Index of the extension in the panel"
 msgstr "Indice dell’estensione nella barra superiore"
 
