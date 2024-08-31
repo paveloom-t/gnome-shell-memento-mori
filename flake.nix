@@ -36,8 +36,9 @@
 
       env = {
         GIR_DIRECTORIES = nixpkgs.lib.concatStringsSep " " (with pkgs; [
-          "${gnome.mutter}/lib/mutter-13"
+          "${glib.dev}/share/gir-1.0"
           "${gnome.gnome-shell}/share/gnome-shell"
+          "${gnome.mutter}/lib/mutter-14"
           "${gobject-introspection.dev}/share/gir-1.0"
           "${gtk4.dev}/share/gir-1.0"
           "${libadwaita.dev}/share/gir-1.0"

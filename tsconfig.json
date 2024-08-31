@@ -1,7 +1,9 @@
 {
   "extends": "@tsconfig/strictest/tsconfig.json",
   "compilerOptions": {
-    "lib": ["ESNext"],
+    "lib": [
+      "ESNext"
+    ],
     "checkJs": false,
     "module": "ESNext",
     "moduleResolution": "node",
@@ -9,16 +11,36 @@
     "target": "ESNext",
     "skipLibCheck": false,
     "paths": {
-      "gi://Adw": ["./types/generated/adw-1.d.ts"],
-      "gi://Clutter": ["./types/generated/clutter-13.d.ts"],
-      "gi://Gio": ["./types/generated/gio-2.0.d.ts"],
-      "gi://GLib": ["./types/generated/glib-2.0.d.ts"],
-      "gi://GObject": ["./types/generated/gobject-2.0.d.ts"],
-      "gi://Gtk": ["./types/generated/gtk-4.0.d.ts"],
-      "gi://St": ["./types/generated/st-13.d.ts"],
-      "resource:///org/gnome/shell/*": ["./types/gnome-shell/*"],
-      "resource:///org/gnome/Shell/Extensions/js/*": ["./types/gnome-shell/*"]
+      "gi://Adw": [
+        "./types/generated/adw-1.d.ts"
+      ],
+      "gi://Clutter": [
+        "./types/generated/clutter-14.d.ts"
+      ],
+      "gi://Gio": [
+        "./types/generated/gio-2.0.d.ts"
+      ],
+      "gi://GLib": [
+        "./types/generated/glib-2.0.d.ts"
+      ],
+      "gi://GObject": [
+        "./types/generated/gobject-2.0.d.ts"
+      ],
+      "gi://Gtk": [
+        "./types/generated/gtk-4.0.d.ts"
+      ],
+      "gi://St": [
+        "./types/generated/st-14.d.ts"
+      ],
+      "resource:///org/gnome/shell/*": [
+        "./types/gnome-shell/*"
+      ],
+      "resource:///org/gnome/Shell/Extensions/js/*": [
+        "./types/gnome-shell/*"
+      ]
     }
   },
-  "include": ["src/**/*.ts"]
+  "include": [
+    "src/**/*.ts"
+  ]
 }
