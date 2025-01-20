@@ -15,7 +15,7 @@
         "./types/generated/adw-1.d.ts"
       ],
       "gi://Clutter": [
-        "./types/generated/clutter-14.d.ts"
+        "./types/generated/clutter-15.d.ts"
       ],
       "gi://Gio": [
         "./types/generated/gio-2.0.d.ts"
@@ -30,7 +30,7 @@
         "./types/generated/gtk-4.0.d.ts"
       ],
       "gi://St": [
-        "./types/generated/st-14.d.ts"
+        "./types/generated/st-15.d.ts"
       ],
       "resource:///org/gnome/shell/*": [
         "./types/gnome-shell/*"

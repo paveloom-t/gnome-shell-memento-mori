@@ -27,7 +27,7 @@
         yamllint
 
         gettext
-        gnome.gnome-shell
+        gnome-shell
         gobject-introspection
         libxml2
 
@@ -37,11 +37,11 @@
       env = {
         GIR_DIRECTORIES = nixpkgs.lib.concatStringsSep " " (with pkgs; [
           "${glib.dev}/share/gir-1.0"
-          "${gnome.gnome-shell}/share/gnome-shell"
-          "${gnome.mutter}/lib/mutter-14"
+          "${gnome-shell}/share/gnome-shell"
           "${gobject-introspection.dev}/share/gir-1.0"
           "${gtk4.dev}/share/gir-1.0"
           "${libadwaita.dev}/share/gir-1.0"
+          "${mutter}/lib/mutter-15"
         ]);
       };
     };
