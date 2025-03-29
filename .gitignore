@@ -2,6 +2,7 @@
 .idea
 .nlsp-settings
 .vscode
+.zed
 
 node_modules
 src/**/*.js
