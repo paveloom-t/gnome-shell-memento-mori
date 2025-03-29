@@ -24,6 +24,7 @@
 
             bash-language-server
             npm-check-updates
+            package-version-server
             shellcheck
             shfmt
             typescript-language-server
