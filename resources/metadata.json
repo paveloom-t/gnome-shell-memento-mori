@@ -11,5 +11,5 @@
   "url": "https://github.com/paveloom-t/gnome-shell-memento-mori",
   "gettext-domain": "memento-mori@paveloom",
   "settings-schema": "org.gnome.shell.extensions.memento-mori",
-  "version": 11
+  "version": 12
 }
