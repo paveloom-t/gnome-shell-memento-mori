@@ -5,7 +5,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9",
-    "@ts-for-gir/cli": "^3",
+    "@ts-for-gir/cli": "=4.0.0-beta.36",
     "@tsconfig/strictest": "^2",
     "@types/node": "^24",
     "eslint": "^9",
