@@ -1,7 +1,7 @@
 {
   "type": "module",
   "scripts": {
-    "types": "ts-for-gir generate -g $GIR_DIRECTORIES"
+    "types": "ts-for-gir generate"
   },
   "devDependencies": {
     "@eslint/js": "^9",
