@@ -15,15 +15,7 @@ expectancy.
 
 #### Build
 
-Make sure you have installed the following:
-
-- [Nix](https://nixos.org)
-- [`direnv`](https://github.com/direnv/direnv)
-- [`nix-direnv`](https://github.com/nix-community/nix-direnv)
-
-Allow `direnv` to load the environment by executing `direnv allow`.
-
-Then, create an extension bundle by running
+Create an extension bundle by running
 
 ```bash
 ./scripts/build.bash
