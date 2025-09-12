@@ -57,7 +57,7 @@ class MementoMoriIndicator extends Button {
     const months = Math.floor(days / 30.436875);
     const years = Math.floor(days / 365.2425);
 
-    const formatString = this.#settings.get_string("format-string")!;
+    const formatString = this.#settings.get_string("format-string");
 
     return formatString
       .replace("${s}", seconds.toFixed())
@@ -131,7 +131,7 @@ export default class MementoMoriExtension extends Extension {
       this.uuid,
       this.#indicator,
       this.#settings.get_int("extension-index"),
-      this.#settings.get_string("extension-position")!,
+      this.#settings.get_string("extension-position"),
     );
 
     this.#timeout = GLib.timeout_add_seconds(GLib.PRIORITY_DEFAULT, 1, () => {
