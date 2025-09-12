@@ -4,15 +4,16 @@
     "types": "ts-for-gir generate -g $GIR_DIRECTORIES"
   },
   "devDependencies": {
-    "@eslint/js": "=9.23.0",
-    "@ts-for-gir/cli": "=3.3.0",
-    "@tsconfig/strictest": "=2.0.5",
-    "@types/node": "=22.13.14",
-    "eslint": "=9.23.0",
-    "eslint-config-prettier": "=10.1.1",
-    "eslint-plugin-prettier": "=5.2.5",
-    "prettier": "=3.5.3",
-    "typescript": "=5.8.2",
-    "typescript-eslint": "=8.28.0"
+    "@eslint/js": "^9",
+    "@ts-for-gir/cli": "^3",
+    "@tsconfig/strictest": "^2",
+    "@types/node": "^24",
+    "eslint": "^9",
+    "eslint-config-prettier": "^10",
+    "eslint-plugin-prettier": "^5",
+    "npm-check-updates": "^18",
+    "prettier": "^3",
+    "typescript": "^5",
+    "typescript-eslint": "^8"
   }
 }
