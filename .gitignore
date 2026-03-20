@@ -1,6 +1,7 @@
 .direnv
 .idea
 .nlsp-settings
+.nvim.lua
 .vscode
 .zed
 
