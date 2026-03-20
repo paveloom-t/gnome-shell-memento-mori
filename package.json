@@ -5,13 +5,13 @@
   },
   "devDependencies": {
     "@eslint/js": "^9",
-    "@ts-for-gir/cli": "=4.0.0-beta.36",
+    "@ts-for-gir/cli": "=4.0.0-beta.40",
     "@tsconfig/strictest": "^2",
-    "@types/node": "^24",
+    "@types/node": "^25",
     "eslint": "^9",
     "eslint-config-prettier": "^10",
     "eslint-plugin-prettier": "^5",
-    "npm-check-updates": "^18",
+    "npm-check-updates": "^19",
     "prettier": "^3",
     "typescript": "^5",
     "typescript-eslint": "^8"
