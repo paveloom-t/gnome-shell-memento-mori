@@ -30,7 +30,7 @@
         "./types/generated/gtk-4.0.d.ts"
       ],
       "gi://St": [
-        "./types/generated/st-16.d.ts"
+        "./types/generated/st-17.d.ts"
       ],
       "resource:///org/gnome/shell/*": [
         "./types/gnome-shell/*"
